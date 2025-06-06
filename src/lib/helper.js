@@ -114,7 +114,7 @@ export const projects = [
                     { label: "Javascript", logo: "/tools/javascript.png" },
                     { label: "Sass", logo: "/tools/sass.png" },
                 ],
-                link: "https://tiara.dev/",
+                link: `${process.env.NEXT_PUBLIC_BASE_URL}`,
                 status: "Live",
             },
             {

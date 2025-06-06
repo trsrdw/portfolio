@@ -20,7 +20,7 @@ export default function Hero({ sectionRefs, sectionRef }) {
     const downloadResume = () => {
         setLoading(true);
         const link = document.createElement("a");
-        link.href = "https://drive.google.com/uc?export=download&id=1DDBj3kTlNXrm3Uu6gPhqKQAdyYkf948W";
+        link.href = "https://drive.google.com/uc?export=download&id=1abW_pdwhS3Ny82zxUVdlZbO30qP7I43i";
         link.download = "CV_TiaraSariDewi.pdf";
         document.body.appendChild(link);
         link.click();
