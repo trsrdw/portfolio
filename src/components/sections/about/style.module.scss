@@ -1,0 +1,305 @@
+@use "@/styles/mixin.scss" as *;
+
+.wrapper {
+    // min-height: 100vh;
+    scroll-snap-align: start;
+    // overflow: hidden;
+    padding: 72px 0;
+}
+
+.content {
+    display: grid;
+    gap: 64px;
+    height: 100%;
+    max-width: 720px;
+    // border: 1px solid black;
+
+    h2 {
+        font-size: 72px;
+        font-weight: 300;
+    }
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    // .title {
+    //     align-self: center;
+    // }
+}
+
+.frame {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+
+}
+
+.btngroup {
+    display: flex;
+    gap: 1rem;
+
+    button {
+        width: 100%;
+    }
+}
+
+.techs {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    // align-items: center;
+}
+
+.iconwrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
+
+    .block {
+        display: flex;
+        flex-direction: column;
+        gap: .75rem;
+        justify-content: center;
+        align-items: center;
+
+        border: 2px solid;
+        border-radius: 8px;
+        height: 120px;
+        width: calc((100% - 64px) / 5);
+
+        img {
+            transition: .2s ease-out;
+        }
+
+        p {
+            font-size: $font-xs;
+            line-height: 1;
+        }
+
+        &.light {
+            background-color: $white;
+            border-color: $primary;
+            box-shadow: 4px 6px 0 $primary;
+
+            p {
+                color: $primary !important;
+            }
+        }
+
+        &.dark {
+            background-color: $primary;
+            border-color: $secondary;
+            box-shadow: 4px 6px 0 $secondary;
+
+            p {
+                color: $white;
+            }
+        }
+
+        &:hover {
+            img {
+                transform: scale(1.1);
+            }
+        }
+    }
+}
+
+
+.educations,
+.experiences {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    .logo {
+        margin-top: .5rem;
+    }
+}
+
+.education {
+    display: flex;
+    gap: 24px;
+
+    .logo {
+        flex-shrink: 0;
+        height: fit-content;
+        width: 40px;
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    .desc {
+        display: flex;
+        flex-direction: column;
+
+        h3 {
+            text-transform: uppercase;
+            font-size: 18px;
+            line-height: 36px;
+        }
+
+        p {
+            display: flex;
+            flex-direction: column;
+
+            .year {
+                font-size: $font-sm;
+            }
+        }
+    }
+}
+
+.experience {
+    display: flex;
+    gap: 24px;
+
+    .logo {
+        flex-shrink: 0;
+        height: fit-content;
+        width: 40px;
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    .info {
+        display: flex;
+        flex-direction: column;
+        // gap: .75rem;
+
+        .company {
+            text-transform: uppercase;
+            font-size: 18px;
+            line-height: 36px;
+        }
+
+        // .as {
+        //     font-size: $font-sm;
+        // }
+    }
+
+    .positions {
+        display: flex;
+        flex-direction: column;
+        // gap: .5rem;
+    }
+
+    .position {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    p {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        font-size: $font-sm;
+    }
+}
+
+@include mobile {
+    .iconwrapper {
+        .block {
+            height: 100px;
+
+            img {
+                height: 32px;
+                width: auto;
+            }
+        }
+    }
+
+    .experience {
+        p {
+            line-height: 32px;
+        }
+    }
+
+    .education {
+        .desc {
+            p {
+                .year {
+                    font-size: $font-xs;
+                }
+            }
+        }
+    }
+}
+
+@include mobile_sm {
+    .frame {
+        gap: 1rem;
+    }
+
+    .btngroup {
+        flex-direction: column;
+    }
+
+    .experience,
+    .education {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .education {
+        .desc {
+            gap: 4px;
+
+            h3 {
+                line-height: 24px;
+            }
+        }
+    }
+
+    .experience {
+        p {
+            line-height: 20px;
+        }
+
+        .info {
+            gap: 4px;
+
+            .company {
+                line-height: 24px;
+            }
+        }
+
+        .positions {
+            gap: 4px;
+        }
+
+        .position {
+            flex-direction: column;
+            gap: 0;
+        }
+    }
+
+    .techs {
+        gap: .5rem;
+
+        // h3 {
+        //     font-size: $font-md;
+        //     line-height: 32px
+        // }
+    }
+
+    .iconwrapper {
+        // gap: 8px;
+
+        .block {
+            height: 80px;
+            width: calc((100% - 16px) / 2);
+        }
+    }
+}

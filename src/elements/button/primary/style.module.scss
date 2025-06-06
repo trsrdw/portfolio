@@ -1,0 +1,78 @@
+@use "@/styles/mixin.scss" as *;
+
+.primary {
+    align-items: center;
+    border: 2px solid;
+    border-radius: 8px;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    height: 48px;
+    justify-content: center;
+    line-height: 24px;
+    padding: 0 16px;
+    position: relative;
+    text-align: center;
+    width: fit-content;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    transition: .2s ease-out;
+
+    &::after {
+        border-radius: 8px;
+        content: "";
+        display: block;
+        height: 48px;
+        left: 0;
+        width: 100%;
+        position: absolute;
+        top: -2px;
+        transform: translate(8px, 8px);
+        transition: transform .2s ease-out;
+        z-index: -1;
+    }
+
+    &.dark {
+        background-color: $primary;
+        border-color: $secondary;
+        color: $white;
+
+        &::after {
+            background-color: $secondary;
+        }
+    }
+
+    &.light {
+        background-color: $white;
+        border-color: $primary;
+        color: $primary;
+
+        &::after {
+            background-color: $primary;
+        }
+    }
+
+    &:hover,
+    &:active {
+        outline: 0;
+        font-weight: $font-bold;
+
+        &::after {
+            transform: translate(0, 0);
+        }
+    }
+}
+
+
+// .button-56:active {
+//     background-color: #ffdeda;
+//     outline: 0;
+// }
+
+// @media (min-width: 768px) {
+//     .primary {
+//         padding: 0 40px;
+//     }
+// }

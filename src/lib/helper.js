@@ -1,0 +1,258 @@
+export const navigations = [
+    { label: "HOME", key: "hero" },
+    { label: "ABOUT", key: "about" },
+    { label: "PROJECTS", key: "projects" },
+    { label: "CONTACTS", key: "contacts" },
+];
+
+export const educations = [
+    {
+        id: 1,
+        school: "Widyatama University",
+        major: "Bachelor of Informatics Engineering, Information Technology",
+        year: "2015 - 2020",
+    },
+];
+
+export const tools = [
+    { label: "Next.js", logo: "/tools/next.png" },
+    { label: "React.js", logo: "/tools/react.png" },
+    { label: "Strapi", logo: "/tools/strapi.png" },
+    { label: "Javascript", logo: "/tools/javascript.png" },
+    { label: "Sass", logo: "/tools/sass.png" },
+    { label: "Bootstrap", logo: "/tools/bootstrap-5.png" },
+    // { label: "Laravel", logo: "/tools/laravel.png" },
+    { label: "Codeigniter", logo: "/tools/codeigniter.png" },
+    { label: "MySQL", logo: "/tools/mysql.png" },
+    // { label: "PostgreSQL", logo: "/tools/postgresql.png" },
+    // { label: "Gulp.js", logo: "/tools/gulp.png" },
+    // { label: "Ionic", logo: "/tools/ionic.png" },
+    // { label: "Firebase", logo: "/tools/firebase.png" },
+    // { label: "Github", logo: "/tools/github.png" },
+    { label: "Node.js", logo: "/tools/node.png" },
+    { label: "Git", logo: "/tools/git.png" },
+];
+
+export const experiences = [
+    {
+        id: 1,
+        company: "Greeneration Foundation",
+        position: [
+            {
+                id: 11,
+                title: "Fullstack Developer",
+                description: "Maintaining and optimizing GF's digital products",
+                year: "Jan 2024 - Present",
+            },
+            {
+                id: 12,
+                title: "Frontend Engineer",
+                description: "Developing GFDP frontend",
+                year: "May 2023 - Dec 2023",
+            }
+        ],
+        location: "Bandung, Indonesia",
+        logo: {
+            path: "/exp/gf.png",
+            width: 160,
+            height: 160,
+            alt: "Logo GF"
+        },
+    },
+    {
+        id: 2,
+        company: "Senja Solutions",
+        position: [
+            {
+                id: 21,
+                title: "Web Developer",
+                description: "Developing Arrow landing page and tweaking several small web projects",
+                year: "Jan 2021 - Jun 2021",
+            },
+        ],
+        location: "Bandung, Indonesia",
+        logo: {
+            path: "/exp/senja.png",
+            width: 400,
+            height: 400,
+            alt: "Logo Widyatama"
+        },
+    },
+    {
+        id: 3,
+        company: "E-Learning Widyatama University",
+        position: [
+            {
+                id: 31,
+                title: "Web Programmer (Internship)",
+                description: "Developing information system for e-learning attendance",
+                year: "Jul 2018 - Aug 2018",
+            },
+        ],
+        location: "Bandung, Indonesia",
+        logo: {
+            path: "/exp/widyatama-logo.png",
+            width: 400,
+            height: 367,
+            alt: "Logo Widyatama"
+        },
+    },
+];
+
+export const projects = [
+    {
+        id: 1,
+        type: "personal",
+        items: [
+            {
+                id: 11,
+                banner: "/projects/portfolio.png",
+                title: "Portfolio",
+                description: "A personal portfolio website showcasing selected projects, built to demonstrate frontend development skills and responsive design.",
+                tools: [
+                    { label: "Next.js", logo: "/tools/next.png" },
+                    { label: "Javascript", logo: "/tools/javascript.png" },
+                    { label: "Sass", logo: "/tools/sass.png" },
+                ],
+                link: "https://tiara.dev/",
+                status: "Live",
+            },
+            {
+                id: 12,
+                banner: "/projects/flippo.png",
+                title: "Final Project: Flippo App",
+                description: "A recommendation tool developed as a final assignment project. The app helps users choose the most suitable laptop based on their preferences and requirements. It features user authentication using Google OAuth and stores data using Firebase's NoSQL database.",
+                tools: [
+                    { label: "Ionic", logo: "/tools/ionic.png" },
+                    { label: "Firebase", logo: "/tools/firebase.png" },
+                    { label: "Bootstrap", logo: "/tools/bootstrap-5.png" },
+                ],
+                link: "",
+                status: "Archived",
+            },
+            {
+                id: 13,
+                banner: "/projects/mm.png",
+                title: "Assignment: Money Management",
+                description: "A simple web application developed for budgeting and expense tracking. Users can record income and expenses, categorize transactions, and view financial summaries.",
+                tools: [
+                    { label: "PHP", logo: "/tools/php.png" },
+                    { label: "JQuery", logo: "/tools/jquery.png" },
+                    { label: "Javascript", logo: "/tools/javascript.png" },
+                    { label: "Bootstrap", logo: "/tools/bootstrap-5.png" },
+                ],
+                link: "",
+                status: "Archived",
+            },
+            {
+                id: 14,
+                banner: "/projects/gebook.png",
+                title: "Assignment: GEBook",
+                description: "A simple online bookstore developed as an assignment project. It allows users to browse available books, view details, and simulate purchases through a clean and user-friendly interface.",
+                tools: [
+                    { label: "HTML", logo: "/tools/html5.png" },
+                    { label: "CSS", logo: "/tools/css3.png" },
+                    { label: "Javascript", logo: "/tools/javascript.png" },
+                    { label: "Bootstrap", logo: "/tools/bootstrap-5.png" },
+                ],
+                link: "",
+                status: "Archived",
+            }
+        ],
+    },
+    {
+        id: 2,
+        type: "featured",
+        items: [
+            {
+                id: 21,
+                banner: "/projects/gf-compro.png",
+                title: "Greeneration Foundation Company Profile",
+                description: "Redeveloped both frontend and backend of the company profile site, migrating from WordPress to a modern stack using Next.js and Strapi.",
+                tools: [
+                    { label: "Next.js", logo: "/tools/next.png" },
+                    { label: "Strapi", logo: "/tools/strapi.png" },
+                    { label: "Javascript", logo: "/tools/javascript.png" },
+                    { label: "Sass", logo: "/tools/sass.png" },
+                    { label: "Bootstrap", logo: "/tools/bootstrap-5.png" },
+                    { label: "MySQL", logo: "/tools/mysql.png" },
+                    { label: "Node.js", logo: "/tools/node.png" },
+                ],
+                link: "https://dev.greeneration.org/",
+                status: "Development",
+            },
+            {
+                id: 22,
+                banner: "/projects/gfdp-hero.png",
+                title: "Green Fund Digital Philanthropy",
+                description: "Contributed to rebuilding the frontend of a digital donation platform using Next.js, transitioning from legacy PHP CodeIgniter code.",
+                tools: [
+                    { label: "Next.js", logo: "/tools/next.png" },
+                    { label: "React.js", logo: "/tools/react.png" },
+                    { label: "Javascript", logo: "/tools/javascript.png" },
+                    { label: "Sass", logo: "/tools/sass.png" },
+                    { label: "Bootstrap", logo: "/tools/bootstrap-5.png" },
+                    { label: "Codeigniter", logo: "/tools/codeigniter.png" },
+                    { label: "MySQL", logo: "/tools/mysql.png" },
+                    { label: "Node.js", logo: "/tools/node.png" },
+                ],
+                link: "https://donation.greeneration.org/",
+                status: "Live",
+            },
+            {
+                id: 23,
+                banner: "/projects/arrow.png",
+                title: "Arrow Landing Page",
+                description: "A clean and responsive landing page created to promote the Arrow Checkout.",
+                tools: [
+                    { label: "Gulp.js", logo: "/tools/gulp.png" },
+                    { label: "Javascript", logo: "/tools/javascript.png" },
+                    { label: "Sass", logo: "/tools/sass.png" },
+                ],
+                link: "",
+                status: "Down",
+            },
+            {
+                id: 24,
+                banner: "/projects/communit.png",
+                title: "Communi-T Landing Page",
+                description: "A clean and responsive landing page created to promote the CommuniT brand.",
+                tools: [
+                    { label: "React.js", logo: "/tools/react.png" },
+                    { label: "Typescript", logo: "/tools/typescript.png" },
+                    { label: "Sass", logo: "/tools/sass.png" },
+                ],
+                link: "",
+                status: "Archived",
+            },
+            {
+                id: 25,
+                banner: "/projects/lincus.png",
+                title: "Lincus Landing Page",
+                description: "A clean and responsive landing page created to promote the Lincus App.",
+                tools: [
+                    { label: "React.js", logo: "/tools/react.png" },
+                    { label: "Typescript", logo: "/tools/typescript.png" },
+                    { label: "Sass", logo: "/tools/sass.png" },
+                ],
+                link: "",
+                status: "Archived",
+            },
+            {
+                id: 26,
+                banner: "/projects/sisfo.png",
+                title: "E-learning Attendance",
+                description: "An information system for managing e-learning attendance at Widyatama University, enabling lecturers and students to track presence effectively.",
+                tools: [
+                    { label: "Codeigniter", logo: "/tools/codeigniter.png" },
+                    { label: "Javascript", logo: "/tools/javascript.png" },
+                    { label: "JQuery", logo: "/tools/jquery.png" },
+                    { label: "MySQL", logo: "/tools/mysql.png" },
+                    { label: "Bootstrap", logo: "/tools/bootstrap-5.png" },
+                ],
+                link: "",
+                status: "Archived",
+            }
+        ],
+    },
+];

@@ -1,0 +1,75 @@
+@use "@/styles/mixin.scss" as *;
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal {
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 2rem;
+    border-radius: 8px;
+    position: relative;
+    width: 90%;
+    border: 2px solid;
+
+    .modaltitle {
+        text-transform: uppercase;
+    }
+
+    &.dark {
+        background: $primary;
+        border-color: $secondary;
+        box-shadow: 6px 8px 0 $secondary;
+
+        svg {
+            path {
+                fill: $white;
+            }
+        }
+    }
+
+    &.light {
+        background: $white;
+        border-color: $primary;
+        box-shadow: 6px 8px 0 $primary;
+
+        svg {
+            path {
+                fill: $primary;
+            }
+        }
+    }
+}
+
+.closeBtn {
+    position: absolute;
+    top: .75rem;
+    right: 1.25rem;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.content {
+    margin-top: 1.5rem;
+    overflow-y: auto;
+}
+
+@include mobile_sm {
+    .modal {
+        padding: 1rem;
+        padding-bottom: 1.5rem;
+    }
+}
