@@ -33,9 +33,9 @@ export default function Projects({ sectionRef }) {
                 <h2>Projects</h2>
 
                 <div className={style.section}>
-                    <h3>Personal</h3>
+                    <h3>Featured</h3>
                     <div className={style.projects}>
-                        {personals.items.map((project, i) => (
+                        {features.items.map((project, i) => (
                             <div
                                 key={i}
                                 className={`${style.projectItem} ${isDark ? style.dark : style.light}`}
@@ -61,9 +61,9 @@ export default function Projects({ sectionRef }) {
                 </div>
 
                 <div className={style.section}>
-                    <h3>Featured</h3>
+                    <h3>Personal</h3>
                     <div className={style.projects}>
-                        {features.items.map((project, i) => (
+                        {personals.items.map((project, i) => (
                             <div
                                 key={i}
                                 className={`${style.projectItem} ${isDark ? style.dark : style.light}`}
