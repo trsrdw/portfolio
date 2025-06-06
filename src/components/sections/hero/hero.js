@@ -1,12 +1,10 @@
-import Container from "@/elements/container/container";
-import style from "./style.module.scss";
-import Link from "next/link";
-import ToggleMode from "@/elements/toggle/mode";
-import ButtonPrimary from "@/elements/button/primary/primary";
-import ButtonSecondary from "@/elements/button/secondary/secondary";
+import { useState } from "react";
 import { useTheme } from "@/lib/context/theme";
 import Image from "next/image";
-import { useState } from "react";
+import Container from "@/elements/container/container";
+import style from "./style.module.scss";
+import ButtonPrimary from "@/elements/button/primary/primary";
+import ButtonSecondary from "@/elements/button/secondary/secondary";
 
 export default function Hero({ sectionRefs, sectionRef }) {
     const { isDark } = useTheme();
@@ -47,12 +45,9 @@ export default function Hero({ sectionRefs, sectionRef }) {
                     <ButtonSecondary
                         onClick={downloadResume}
                         disabled={loading}
-                        className={`${style.download} ${isDark ? style.dark : ""}`}
+                        className={`${style.download} ${isDark ? style.dark : style.light}`}
                     >
                         {loading ? (
-                            // <span className={style.loading}>
-                            //     Fetching the clues… <span className={style.spinner}>⏳</span>
-                            // </span>
                             <span>
                                 Fetching the clues... <span className={style.spinner}></span>
                             </span>

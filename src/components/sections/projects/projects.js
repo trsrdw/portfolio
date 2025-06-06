@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { useTheme } from "@/lib/context/theme";
+import { projects } from "@/lib/helper";
+import Link from "next/link";
 import Container from "@/elements/container/container";
 import style from "./style.module.scss";
-import { projects } from "@/lib/helper";
-import { useTheme } from "@/lib/context/theme";
 import ScrollableModal from "@/elements/modal/modal";
-import Link from "next/link";
+import ButtonPrimary from "@/elements/button/primary/primary";
+import SvgIcon from "@/elements/icon/svg";
+import Image from "next/image";
 
 export default function Projects({ sectionRef }) {
     const { isDark } = useTheme();
@@ -36,20 +39,22 @@ export default function Projects({ sectionRef }) {
                             <div
                                 key={i}
                                 className={`${style.projectItem} ${isDark ? style.dark : style.light}`}
-                                onClick={() => handleProjectClick(project)}
                             >
                                 <div className={style.banner}>
-                                    <img src={project.banner} alt={`Banner ${project.title}`} />
+                                    <Image src={project.banner} alt={`Banner ${project.title}`} fill />
                                 </div>
                                 <h4>{project.title}</h4>
                                 <div className={style.labels}>
                                     {project.tools.map((tool, i) => (
                                         <div className={style.label} key={i}>
-                                            <div className={style.logo}><img src={tool.logo} alt={`Logo ${tool.label}`} /></div>
-                                            <p>{tool.label}</p>
+                                            <div className={style.logo}><Image src={tool.logo} alt={`Logo ${tool.label}`} fill /></div>
                                         </div>
                                     ))}
                                 </div>
+                                <ButtonPrimary onClick={() => handleProjectClick(project)} className={style.learn}>
+                                    <span>Learn More</span>
+                                    <SvgIcon url={"/arrow-right.svg"} />
+                                </ButtonPrimary>
                             </div>
                         ))}
                     </div>
@@ -62,20 +67,22 @@ export default function Projects({ sectionRef }) {
                             <div
                                 key={i}
                                 className={`${style.projectItem} ${isDark ? style.dark : style.light}`}
-                                onClick={() => handleProjectClick(project)}
                             >
                                 <div className={style.banner}>
-                                    <img src={project.banner} alt={`Banner ${project.title}`} />
+                                    <Image src={project.banner} alt={`Banner ${project.title}`} fill />
                                 </div>
                                 <h4>{project.title}</h4>
                                 <div className={style.labels}>
                                     {project.tools.map((tool, i) => (
                                         <div className={style.label} key={i}>
-                                            <div className={style.logo}><img src={tool.logo} alt={`Logo ${tool.label}`} /></div>
-                                            <p>{tool.label}</p>
+                                            <div className={style.logo}><Image src={tool.logo} alt={`Logo ${tool.label}`} fill /></div>
                                         </div>
                                     ))}
                                 </div>
+                                <ButtonPrimary onClick={() => handleProjectClick(project)} className={style.learn}>
+                                    <span>Learn More</span>
+                                    <SvgIcon url={"/arrow-right.svg"} />
+                                </ButtonPrimary>
                             </div>
                         ))}
                     </div>
@@ -89,19 +96,23 @@ export default function Projects({ sectionRef }) {
             >
                 {selectedProject && (
                     <div className={`${style.custommodal} ${isDark ? style.dark : style.light}`}>
-                        <img className={style.modalBanner} src={selectedProject.banner} alt={`Banner ${selectedProject.title}`} style={{ width: '100%', borderRadius: 8 }} />
-                        <p>{selectedProject.description}</p>
                         <div className={style.modalTools}>
-                            {/* <p><strong>Tools</strong></p> */}
                             <div className={style.labels}>
                                 {selectedProject.tools.map((tool, i) => (
                                     <div className={style.label} key={i}>
-                                        <div className={style.logo}><img src={tool.logo} alt={`Logo ${tool.label}`} /></div>
+                                        <div className={style.logo}><Image src={tool.logo} alt={`Logo ${tool.label}`} fill /></div>
                                         <p>{tool.label}</p>
                                     </div>
                                 ))}
                             </div>
                         </div>
+
+                        <div className={style.modalBanner}>
+                            <Image src={selectedProject.banner} alt={`Banner ${selectedProject.title}`} fill />
+                        </div>
+
+                        <p>{selectedProject.description}</p>
+
                         <div className={style.etc}>
                             <div
                                 className={`${style.status} ${selectedProject.status === 'Live'
@@ -119,8 +130,10 @@ export default function Projects({ sectionRef }) {
                             </div>
 
                             {selectedProject.link && (
-                                <Link href={selectedProject.link} target={"_blank"} className={style.link}><span>Site</span><svg width="24" height="24" viewBox="0 0 24 24"><polygon fill="black" points="7 7 15.586 7 5.293 17.293 6.707 18.707 17 8.414 17 17 19 17 19 5 7 5 7 7" />
-                                </svg></Link>
+                                <Link href={selectedProject.link} target={"_blank"} className={style.link}>
+                                    <span>Site</span>
+                                    <SvgIcon url={"/external.svg"} />
+                                </Link>
                             )}
                         </div>
                     </div>

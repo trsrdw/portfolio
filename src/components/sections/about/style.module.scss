@@ -17,6 +17,7 @@
     h2 {
         font-size: 72px;
         font-weight: 300;
+        line-height: 96px;
     }
 }
 
@@ -30,13 +31,7 @@
     // }
 }
 
-.frame {
-    align-self: center;
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
 
-}
 
 .btngroup {
     display: flex;
@@ -48,6 +43,7 @@
 }
 
 .techs {
+    align-self: center;
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -66,15 +62,31 @@
         gap: .75rem;
         justify-content: center;
         align-items: center;
-
+        cursor: pointer;
         border: 2px solid;
         border-radius: 8px;
         height: 120px;
         width: calc((100% - 64px) / 5);
+        transition: .2s ease-out;
 
-        img {
-            transition: .2s ease-out;
+        .icon {
+            height: 48px;
+            width: 48px;
+            position: relative;
+
+            img {
+                // margin-bottom: -10px;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: .2s ease-out;
+            }
         }
+
+        // img {
+        //     // filter: grayscale(100%);
+        //     transition: .2s ease-out;
+        // }
 
         p {
             font-size: $font-xs;
@@ -92,9 +104,9 @@
         }
 
         &.dark {
-            background-color: $primary;
-            border-color: $secondary;
-            box-shadow: 4px 6px 0 $secondary;
+            background-color: #222;
+            border-color: #111;
+            box-shadow: 4px 6px 0 $bg-black;
 
             p {
                 color: $white;
@@ -102,8 +114,13 @@
         }
 
         &:hover {
-            img {
-                transform: scale(1.1);
+            box-shadow: 0 0 0 transparent;
+
+            .icon {
+                img {
+                    transform: scale(1.1);
+                    // filter: grayscale(0%);
+                }
             }
         }
     }
@@ -209,13 +226,21 @@
 }
 
 @include mobile {
+    .content {
+        h2 {
+            font-size: 40px;
+            line-height: 56px;
+            font-weight: 400;
+        }
+    }
+
     .iconwrapper {
         .block {
             height: 100px;
 
-            img {
+            .icon {
                 height: 32px;
-                width: auto;
+                width: 32px;
             }
         }
     }
@@ -238,10 +263,6 @@
 }
 
 @include mobile_sm {
-    .frame {
-        gap: 1rem;
-    }
-
     .btngroup {
         flex-direction: column;
     }

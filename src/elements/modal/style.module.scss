@@ -25,12 +25,13 @@
 
     .modaltitle {
         text-transform: uppercase;
+        line-height: 32px;
     }
 
     &.dark {
-        background: $primary;
-        border-color: $secondary;
-        box-shadow: 6px 8px 0 $secondary;
+        background: #222;
+        border-color: #111;
+        box-shadow: 6px 8px 0 $bg-black;
 
         svg {
             path {
@@ -62,8 +63,13 @@
     cursor: pointer;
 }
 
+.contentwrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
 .content {
-    margin-top: 1.5rem;
     overflow-y: auto;
 }
 

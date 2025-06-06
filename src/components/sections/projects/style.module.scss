@@ -17,6 +17,7 @@
     h2 {
         font-size: 72px;
         font-weight: 300;
+        line-height: 96px;
     }
 }
 
@@ -41,13 +42,13 @@
     width: calc((100% - 24px) / 2);
     height: fit-content;
     border: 2px solid;
-    padding: .5rem;
+    padding: 1rem;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
-    gap: .5rem;
+    gap: 1rem;
     transition: .2s ease-out;
-    cursor: pointer;
+    // cursor: pointer;
 
     h4 {
         text-transform: uppercase;
@@ -62,12 +63,45 @@
         width: 100%;
         border: 2px solid;
         border-radius: 8px;
-        aspect-ratio: 16 / 9;
+        position: relative;
+        // aspect-ratio: 16 / 9;
 
         img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+    }
+
+    .learn {
+        height: fit-content;
+        padding: 8px;
+        transition: .2s ease-out;
+        font-size: $font-xs;
+        line-height: 16px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+
+        svg {
+            height: 12px;
+            width: auto;
+            margin-bottom: -2px;
+            // transform: rotate(-45deg);
+
+            path {
+                fill: $primary;
+            }
+        }
+
+
+        &::after {
+            content: none;
+        }
+
+        &:hover,
+        &:active {
+            transform: scale(1.1);
         }
     }
 
@@ -82,18 +116,29 @@
     }
 
     &.dark {
-        border-color: $secondary;
-        background-color: $primary;
-        box-shadow: 6px 8px 0 $secondary;
+        border-color: #111;
+        background-color: #222;
+        box-shadow: 6px 8px 0 $bg-black;
 
         .banner {
-            border-color: $secondary;
+            border-color: #111;
+        }
+
+        .learn {
+            background-color: #111;
+
+            svg {
+
+                path {
+                    fill: $white;
+                }
+            }
         }
     }
 
-    &:hover {
-        box-shadow: 0 0 0 $secondary;
-    }
+    // &:hover {
+    //     box-shadow: 0 0 0 $secondary;
+    // }
 }
 
 .labels {
@@ -108,7 +153,7 @@
 
         // border: 2px solid $primary;
         border-radius: 6px;
-        padding: 6px 8px;
+        padding: 8px;
         width: fit-content;
 
         p {
@@ -119,6 +164,7 @@
         .logo {
             height: 18px;
             width: 18px;
+            position: relative;
 
             img {
                 height: auto;
@@ -141,9 +187,22 @@
     gap: 1.5rem;
 
     .modalBanner {
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+        height: 260px;
         width: 100%;
-        border-radius: 8px;
         border: 2px solid;
+        border-radius: 8px;
+        position: relative;
+        // aspect-ratio: 16 / 9;
+
+        img {
+            // margin-bottom: -10px;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
     }
 
     .modalTools {
@@ -161,7 +220,7 @@
             font-size: $font-xs;
             line-height: 16px;
             border-radius: 6px;
-            padding: 6px 8px;
+            padding: 8px;
             font-weight: $font-semibold;
 
             &.positive {
@@ -180,7 +239,7 @@
             }
 
             &.disabled {
-                background-color: $text-disable;
+                background-color: rgba($text-disable, 0.3);
                 color: $primary;
             }
         }
@@ -189,22 +248,21 @@
             font-size: $font-xs;
             line-height: 16px;
             border-radius: 6px;
-            padding: 6px 8px;
+            padding: 8px;
 
             color: $white;
             background-color: $info-indigo;
             transition: .2s ease-out;
 
             display: flex;
-            gap: 4px;
+            gap: 6px;
             align-items: center;
 
             svg {
-                height: 16px;
+                height: 12px;
                 width: auto;
-                margin-bottom: -2px;
 
-                polygon {
+                path {
                     fill: $white;
                 }
             }
@@ -213,7 +271,8 @@
                 content: none;
             }
 
-            &:hover {
+            &:hover,
+            &:active {
                 box-shadow: none;
                 background-color: #6f42c1;
                 font-weight: $font-semibold;
@@ -223,7 +282,7 @@
 
     &.dark {
         .modalBanner {
-            border-color: $secondary;
+            border-color: #111;
         }
     }
 
@@ -238,8 +297,6 @@
     .label {
         background-color: black;
     }
-
-    .status {}
 }
 
 .light {
@@ -249,6 +306,16 @@
         // p {
         //     color: $white;
         // }
+    }
+}
+
+@include mobile {
+    .content {
+        h2 {
+            font-size: 40px;
+            line-height: 56px;
+            font-weight: 400;
+        }
     }
 }
 

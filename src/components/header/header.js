@@ -5,7 +5,6 @@ import Image from "next/image";
 import Container from "@/elements/container/container";
 import style from "./style.module.scss";
 import ToggleMode from "@/elements/toggle/mode";
-import Link from "next/link";
 
 export default function Header({ sectionRefs, activeSection }) {
     const { isDark } = useTheme();
@@ -66,7 +65,6 @@ export default function Header({ sectionRefs, activeSection }) {
                                         >
                                             {label}
                                         </button>
-                                        {/* <Link href={`#${key}`}>{label}</Link> */}
                                     </li>
                                 ))}
                             {!(isMobile && activeSection === "hero") && (

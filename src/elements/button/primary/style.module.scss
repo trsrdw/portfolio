@@ -35,12 +35,12 @@
     }
 
     &.dark {
-        background-color: $primary;
-        border-color: $secondary;
+        background-color: #222;
+        border-color: #111;
         color: $white;
 
         &::after {
-            background-color: $secondary;
+            background-color: $bg-black;
         }
     }
 

@@ -1,0 +1,144 @@
+@use "@/styles/mixin.scss" as *;
+
+.wrapper {
+    height: 100vh;
+    scroll-snap-align: start;
+    padding-top: 72px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-width: 720px;
+
+    h2 {
+        font-size: 72px;
+        font-weight: 300;
+        line-height: 96px;
+    }
+}
+
+.frame {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.iconwrapper {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+    // margin-top: -72px;
+}
+
+.icon {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+    justify-content: center;
+    align-items: center;
+    transition: .2s ease-out;
+    border: 2px solid;
+    border-radius: 8px;
+    height: 120px;
+    width: 140px;
+    // width: calc((100% - 16rem) / 3);
+
+    svg {
+        width: 48px;
+        height: auto;
+        transition: .2s ease-out;
+    }
+
+    p {
+        font-size: $font-xs;
+        line-height: 1;
+    }
+
+    &::after {
+        content: none;
+    }
+
+    &.light {
+        background-color: $white;
+        border-color: $primary;
+        box-shadow: 4px 6px 0 $primary;
+
+        svg {
+            path {
+                fill: $primary;
+            }
+        }
+    }
+
+    &.dark {
+        background-color: #222;
+        border-color: #111;
+        box-shadow: 4px 6px 0 $bg-black;
+
+        svg {
+            path {
+                fill: $white;
+            }
+        }
+    }
+
+    &:hover,
+    &:active {
+        svg {
+            transform: scale(1.1);
+        }
+
+        box-shadow: 0 0 0 transparent;
+
+        // &.linkedin {
+        //     svg {
+        //         path {
+        //             fill: $linkedin;
+        //         }
+        //     }
+        // }
+    }
+}
+
+.copyright {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    height: 56px;
+    align-items: flex-end;
+
+    p {
+        font-size: $font-xs;
+    }
+}
+
+@include mobile {
+    .content {
+        h2 {
+            font-size: 40px;
+            line-height: 56px;
+            font-weight: 400;
+        }
+    }
+
+    .icon {
+        height: 80px;
+        width: 100px;
+
+        svg {
+            height: 32px;
+        }
+    }
+}
+
+@include mobile_sm {
+    .iconwrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+}

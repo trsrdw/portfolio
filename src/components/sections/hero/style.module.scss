@@ -60,59 +60,30 @@
     span {
         flex-shrink: 0;
     }
-
-    // svg {
-    //     display: none;
-    //     flex-shrink: 0;
-
-    //     height: 18px;
-    //     width: auto;
-
-    //     path {
-    //         fill: $primary;
-    //     }
-    // }
-
-    // &.dark {
-    //     svg {
-    //         path {
-    //             fill: $white;
-    //         }
-    //     }
-    // }
 }
-
-// .loading {
-//     display: inline-flex;
-//     align-items: center;
-//     gap: 0.5rem;
-// }
-
-// .spinner {
-//     display: inline-block;
-//     animation: spin 1.2s linear infinite;
-// }
-
-// @keyframes spin {
-//     0% {
-//         transform: rotate(0deg);
-//     }
-
-//     100% {
-//         transform: rotate(360deg);
-//     }
-// }
 
 .spinner {
     display: inline-block;
     width: 14px;
     height: 14px;
-    border: 2px solid $primary; // black spinner
-    border-top: 2px solid transparent;
     border-radius: 50%;
     animation: spin 0.6s linear infinite;
-    margin-left: 8px; // space from text
+    margin-left: 8px;
     vertical-align: middle;
+}
+
+.dark {
+    .spinner {
+        border: 2px solid $white;
+        border-top: 2px solid transparent;
+    }
+}
+
+.light {
+    .spinner {
+        border: 2px solid $primary;
+        border-top: 2px solid transparent;
+    }
 }
 
 @keyframes spin {
@@ -153,9 +124,6 @@
     }
 }
 
-
-@include tablet {}
-
 @include mobile {
     .cta {
         flex-direction: column;
@@ -173,5 +141,3 @@
         }
     }
 }
-
-@include mobile_sm {}

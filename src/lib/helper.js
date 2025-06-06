@@ -124,7 +124,9 @@ export const projects = [
                 description: "A recommendation tool developed as a final assignment project. The app helps users choose the most suitable laptop based on their preferences and requirements. It features user authentication using Google OAuth and stores data using Firebase's NoSQL database.",
                 tools: [
                     { label: "Ionic", logo: "/tools/ionic.png" },
+                    { label: "Angular", logo: "/tools/angular.png" },
                     { label: "Firebase", logo: "/tools/firebase.png" },
+                    { label: "Typescript", logo: "/tools/typescript.png" },
                     { label: "Bootstrap", logo: "/tools/bootstrap-5.png" },
                 ],
                 link: "",
@@ -188,7 +190,7 @@ export const projects = [
                 description: "Contributed to rebuilding the frontend of a digital donation platform using Next.js, transitioning from legacy PHP CodeIgniter code.",
                 tools: [
                     { label: "Next.js", logo: "/tools/next.png" },
-                    { label: "React.js", logo: "/tools/react.png" },
+                    // { label: "React.js", logo: "/tools/react.png" },
                     { label: "Javascript", logo: "/tools/javascript.png" },
                     { label: "Sass", logo: "/tools/sass.png" },
                     { label: "Bootstrap", logo: "/tools/bootstrap-5.png" },
@@ -255,4 +257,10 @@ export const projects = [
             }
         ],
     },
+];
+
+export const contacts = [
+    { label: "LinkedIn", logo: "/contacts/linkedin.svg", link: "https://www.linkedin.com/in/tiarasdewi" },
+    { label: "Github", logo: "/contacts/github.svg", link: "https://github.com/trsrdw" },
+    { label: "Email", logo: "/contacts/paper-plane.svg", link: "mailto:tiarasd.work@gmail.com" },
 ];
