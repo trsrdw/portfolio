@@ -11,7 +11,7 @@ export default function Contacts({ sectionRef }) {
     return (
         <section ref={sectionRef} className={style.wrapper}>
             <Container className={style.content}>
-                <h2>Contacts</h2>
+                {/* <h2>Contacts</h2> */}
 
                 <div className={style.frame}>
                     <div className={style.iconwrapper}>

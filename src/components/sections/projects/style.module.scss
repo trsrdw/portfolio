@@ -317,11 +317,23 @@
             font-weight: 400;
         }
     }
+
+    // .custommodal {
+    //     .modalBanner {
+    //         height: 200px;
+    //     }
+    // }
 }
 
 @include mobile_sm {
     .projectItem {
         width: 100%;
+    }
+
+    .custommodal {
+        .modalBanner {
+            height: 160px;
+        }
     }
 }
 

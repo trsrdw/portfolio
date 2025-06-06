@@ -69,6 +69,10 @@
         width: calc((100% - 64px) / 5);
         transition: .2s ease-out;
 
+        &::after {
+            content: none;
+        }
+
         .icon {
             height: 48px;
             width: 48px;

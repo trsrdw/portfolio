@@ -16,11 +16,11 @@
 .modal {
     max-width: 600px;
     max-height: 80vh;
-    overflow-y: auto;
+    overflow: hidden;
     padding: 2rem;
     border-radius: 8px;
     position: relative;
-    width: 90%;
+    width: calc(100% - 2rem);
     border: 2px solid;
 
     .modaltitle {
@@ -67,10 +67,28 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
+
+    height: calc(100% - 1.5rem);
 }
 
 .content {
+    height: 100%;
     overflow-y: auto;
+}
+
+@include mobile {
+    .modal {
+        max-height: unset;
+        max-width: unset;
+        height: 100vh;
+        width: 100vw;
+        border-radius: 0;
+        border: 0;
+    }
+
+    .contentwrapper {
+        margin-top: 24px;
+    }
 }
 
 @include mobile_sm {

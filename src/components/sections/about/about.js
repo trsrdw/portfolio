@@ -3,6 +3,7 @@ import { educations, experiences, tools } from "@/lib/helper";
 import Container from "@/elements/container/container";
 import style from "./style.module.scss";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function About({ sectionRef }) {
     const { isDark } = useTheme();
@@ -61,12 +62,12 @@ export default function About({ sectionRef }) {
                     <h3>Current Technologies</h3>
                     <div className={style.iconwrapper}>
                         {tools.map((tool, index) => (
-                            <div className={`${style.block} ${isDark ? style.dark : style.light}`} key={index}>
+                            <Link href={tool.link} target={"_blank"} className={`${style.block} ${isDark ? style.dark : style.light}`} key={index}>
                                 <div className={style.icon}>
                                     <Image src={tool.logo} alt={`Logo ${tool.label}`} fill />
                                 </div>
                                 <p>{tool.label}</p>
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 </div>

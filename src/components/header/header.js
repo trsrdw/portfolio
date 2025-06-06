@@ -11,6 +11,15 @@ export default function Header({ sectionRefs, activeSection }) {
     const [isOpen, setIsOpen] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
     const logo = isDark ? "/logo-white.png" : "/logo-transparent.png";
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const onScroll = () => {
+            setScrolled(window.scrollY > 68); // 50px scroll before effect
+        };
+        window.addEventListener('scroll', onScroll);
+        return () => window.removeEventListener('scroll', onScroll);
+    }, []);
 
     useEffect(() => {
         const checkMobile = () => setIsMobile(window.innerWidth <= 992);
@@ -28,7 +37,7 @@ export default function Header({ sectionRefs, activeSection }) {
     };
 
     return (
-        <nav className={style.wrapper}>
+        <nav className={`${style.wrapper} ${isDark ? style.dark : style.light} ${scrolled ? style.bg : ""}`}>
             <Container className={style.content}>
                 <div className={style.logo}>
                     <Image src={logo} width={500} height={500} alt={"TRSD"} priority />
@@ -55,7 +64,7 @@ export default function Header({ sectionRefs, activeSection }) {
                     )}
 
                     {!(activeSection === "hero" && !isMobile) && (
-                        <ul className={`${style.navigation} ${isDark ? style.dark : ""} ${isOpen || !isMobile ? style.show : ""}`}>
+                        <ul className={`${style.navigation} ${isDark ? style.dark : style.light} ${isOpen || !isMobile ? style.show : ""}`}>
                             {(!isMobile || (isMobile && activeSection !== "hero")) &&
                                 navigations.map(({ label, key }) => (
                                     <li key={key}>

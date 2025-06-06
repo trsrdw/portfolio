@@ -15,22 +15,23 @@ export const educations = [
 ];
 
 export const tools = [
-    { label: "Next.js", logo: "/tools/next.png" },
-    { label: "React.js", logo: "/tools/react.png" },
-    { label: "Strapi", logo: "/tools/strapi.png" },
-    { label: "Javascript", logo: "/tools/javascript.png" },
-    { label: "Sass", logo: "/tools/sass.png" },
-    { label: "Bootstrap", logo: "/tools/bootstrap-5.png" },
-    // { label: "Laravel", logo: "/tools/laravel.png" },
-    { label: "Codeigniter", logo: "/tools/codeigniter.png" },
-    { label: "MySQL", logo: "/tools/mysql.png" },
-    // { label: "PostgreSQL", logo: "/tools/postgresql.png" },
-    // { label: "Gulp.js", logo: "/tools/gulp.png" },
-    // { label: "Ionic", logo: "/tools/ionic.png" },
-    // { label: "Firebase", logo: "/tools/firebase.png" },
-    // { label: "Github", logo: "/tools/github.png" },
-    { label: "Node.js", logo: "/tools/node.png" },
-    { label: "Git", logo: "/tools/git.png" },
+    { label: "Next.js", logo: "/tools/next.png", link: "https://nextjs.org/" },
+    { label: "React.js", logo: "/tools/react.png", link: "https://react.dev/" },
+    { label: "Strapi", logo: "/tools/strapi.png", link: "https://strapi.io/" },
+    { label: "Javascript", logo: "/tools/javascript.png", link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+    { label: "Sass", logo: "/tools/sass.png", link: "https://sass-lang.com/" },
+    { label: "Bootstrap", logo: "/tools/bootstrap-5.png", link: "https://getbootstrap.com/" },
+    // { label: "Laravel", logo: "/tools/laravel.png", link: "https://laravel.com/" },
+    { label: "Codeigniter", logo: "/tools/codeigniter.png", link: "https://www.codeigniter.com/" },
+    { label: "MySQL", logo: "/tools/mysql.png", link: "https://www.mysql.com/" },
+    // { label: "PostgreSQL", logo: "/tools/postgresql.png", link: "https://www.postgresql.org/" },
+    // { label: "Gulp.js", logo: "/tools/gulp.png", link: "https://gulpjs.com/" },
+    // { label: "Ionic", logo: "/tools/ionic.png", link: "https://ionicframework.com/" },
+    // { label: "Firebase", logo: "/tools/firebase.png", link: "https://firebase.google.com/" },
+    // { label: "Github", logo: "/tools/github.png", link: "https://github.com/" },
+    // { label: "Typescript", logo: "/tools/typescript.png", link: "https://www.typescriptlang.org/" },
+    { label: "Node.js", logo: "/tools/node.png", link: "https://nodejs.org/en" },
+    { label: "Git", logo: "/tools/git.png", link: "https://git-scm.com/" },
 ];
 
 export const experiences = [
@@ -180,7 +181,7 @@ export const projects = [
                     { label: "MySQL", logo: "/tools/mysql.png" },
                     { label: "Node.js", logo: "/tools/node.png" },
                 ],
-                link: "https://dev.greeneration.org/",
+                link: "",
                 status: "Development",
             },
             {
