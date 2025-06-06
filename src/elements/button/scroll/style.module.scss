@@ -1,46 +1,34 @@
 @use "@/styles/mixin.scss" as *;
 
-.primary {
+.scroll {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
     align-items: center;
     border: 2px solid;
     border-radius: 8px;
     box-sizing: border-box;
     cursor: pointer;
     display: flex;
-    height: 48px;
     justify-content: center;
     line-height: 24px;
-    padding: 0 16px;
-    position: relative;
+    padding: .85rem 1rem;
     text-align: center;
-    width: fit-content;
     text-decoration: none;
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
     transition: .2s ease-out;
 
-    &::after {
-        border-radius: 8px;
-        content: "";
-        display: block;
-        height: 48px;
-        left: 0;
-        width: 100%;
-        position: absolute;
-        top: -2px;
-        transform: translate(8px, 8px);
-        transition: transform .2s ease-out;
-        z-index: -1;
-    }
-
     &.dark {
-        background-color: #222;
-        border-color: #111;
+        background-color: #111;
+        border-color: #000;
         color: $white;
 
-        &::after {
-            background-color: $bg-black;
+        svg {
+            path {
+                fill: $white;
+            }
         }
     }
 
@@ -49,26 +37,20 @@
         border-color: $primary;
         color: $primary;
 
-        &::after {
-            background-color: $primary;
+        svg {
+            path {
+                fill: $primary;
+            }
         }
     }
 
     &.clicked {
         font-weight: $font-bold;
-
-        &::after {
-            transform: translate(0, 0);
-        }
     }
 
     &:hover {
         outline: 0;
         font-weight: $font-bold;
-
-        &::after {
-            transform: translate(0, 0);
-        }
     }
 }
 

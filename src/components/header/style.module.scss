@@ -28,11 +28,19 @@
     grid-template-columns: repeat(2, 1fr);
     position: relative;
 
-    button {
-        background: none;
-        border: none;
-        padding: 0;
-        cursor: pointer;
+
+}
+
+.up {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+
+    &.show {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
     }
 }
 
@@ -40,6 +48,10 @@
     display: flex;
     height: 36px;
     width: 36px;
+
+    &::after {
+        content: none;
+    }
 
     img {
         width: 100%;
@@ -54,6 +66,13 @@
 .navigation {
     display: flex;
     gap: 1.5rem;
+
+    button {
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+    }
 }
 
 .menuToggle {

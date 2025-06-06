@@ -32,7 +32,7 @@ export default function Hero({ sectionRefs, sectionRef }) {
         <section ref={sectionRef} className={style.wrapper}>
             <Container className={style.content}>
                 <div className={`${style.photo} ${isDark ? style.dark : style.light}`}>
-                    <Image src={"/tiara.png"} width={295} height={520} alt={"Tiara"} />
+                    <Image src={"/tiara.png"} width={295} height={520} alt={"Tiara"} priority />
                 </div>
 
                 <div className={style.heading}>

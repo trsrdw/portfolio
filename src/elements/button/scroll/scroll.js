@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useTheme } from "@/lib/context/theme";
 import style from "./style.module.scss";
+import SvgIcon from "@/elements/icon/svg";
 
-export default function ButtonPrimary({ children, className, onClick }) {
+export default function ButtonScroll({ theme, className, onClick }) {
     const { isDark } = useTheme();
     const [clicked, setClicked] = useState(false);
 
@@ -13,8 +14,8 @@ export default function ButtonPrimary({ children, className, onClick }) {
     };
 
     return (
-        <button onClick={handleClick} className={`${style.primary} ${isDark ? style.dark : style.light} ${className} ${clicked ? style.clicked : ""}`}>
-            {children}
+        <button onClick={handleClick} className={`${style.scroll} ${style[theme]} ${className} ${clicked ? style.clicked : ""}`}>
+            <SvgIcon url={"/arrow-up.svg"} />
         </button>
     );
 }

@@ -5,21 +5,23 @@ import Image from "next/image";
 import Container from "@/elements/container/container";
 import style from "./style.module.scss";
 import ToggleMode from "@/elements/toggle/mode";
+import Link from "next/link";
+import ButtonScroll from "@/elements/button/scroll/scroll";
 
 export default function Header({ sectionRefs, activeSection }) {
     const { isDark } = useTheme();
     const [isOpen, setIsOpen] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
     const logo = isDark ? "/logo-white.png" : "/logo-transparent.png";
-    const [scrolled, setScrolled] = useState(false);
+    // const [scrolled, setScrolled] = useState(false);
 
-    useEffect(() => {
-        const onScroll = () => {
-            setScrolled(window.scrollY > 68); // 50px scroll before effect
-        };
-        window.addEventListener('scroll', onScroll);
-        return () => window.removeEventListener('scroll', onScroll);
-    }, []);
+    // useEffect(() => {
+    //     const onScroll = () => {
+    //         setScrolled(activeSection !== "hero");
+    //     };
+    //     window.addEventListener('scroll', onScroll);
+    //     return () => window.removeEventListener('scroll', onScroll);
+    // }, [activeSection]);
 
     useEffect(() => {
         const checkMobile = () => setIsMobile(window.innerWidth <= 992);
@@ -37,11 +39,12 @@ export default function Header({ sectionRefs, activeSection }) {
     };
 
     return (
-        <nav className={`${style.wrapper} ${isDark ? style.dark : style.light} ${scrolled ? style.bg : ""}`}>
+        <nav className={`${style.wrapper} ${isDark ? style.dark : style.light} ${activeSection !== "hero" ? style.bg : ""}`}>
             <Container className={style.content}>
-                <div className={style.logo}>
+                <ButtonScroll theme={isDark ? "dark" : "light"} className={`${style.up} ${activeSection !== "hero" ? style.show : ""}`} onClick={() => scrollToSection("hero")} />
+                <Link href={`${process.env.NEXT_PUBLIC_BASE_URL}`} className={style.logo}>
                     <Image src={logo} width={500} height={500} alt={"TRSD"} priority />
-                </div>
+                </Link>
 
                 <div className={style.right}>
                     {isMobile ? (
