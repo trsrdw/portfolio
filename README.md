@@ -23,16 +23,16 @@ Welcome to the source code of my personal portfolio. This site showcases my work
 
 To run this project locally:
 
-# Clone the repo
+### Clone the repo
 git clone https://github.com/trsrdw/portfolio.git
 
-# Navigate to the project directory
+### Navigate to the project directory
 cd portfolio
 
-# Install dependencies
+### Install dependencies
 npm install
 
-# Start the development server
+### Start the development server
 npm run dev
 
 The app will be running at http://localhost:3000
