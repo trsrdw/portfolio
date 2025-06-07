@@ -85,7 +85,7 @@ export const experiences = [
         position: [
             {
                 id: 31,
-                title: "Web Programmer (Internship)",
+                title: "Programmer (Internship)",
                 description: "Developing information system for e-learning attendance",
                 year: "Jul 2018 - Aug 2018",
             },

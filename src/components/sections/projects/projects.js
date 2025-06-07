@@ -4,7 +4,7 @@ import { projects } from "@/lib/helper";
 import Link from "next/link";
 import Container from "@/elements/container/container";
 import style from "./style.module.scss";
-import ScrollableModal from "@/elements/modal/modal";
+import Modal from "@/elements/modal/modal";
 import ButtonPrimary from "@/elements/button/primary/primary";
 import SvgIcon from "@/elements/icon/svg";
 import Image from "next/image";
@@ -89,7 +89,7 @@ export default function Projects({ sectionRef }) {
                 </div>
             </Container>
 
-            <ScrollableModal
+            <Modal
                 isOpen={isModalOpen}
                 onClose={closeModal}
                 title={selectedProject?.title || ""}
@@ -139,7 +139,7 @@ export default function Projects({ sectionRef }) {
                         </div>
                     </div>
                 )}
-            </ScrollableModal>
+            </Modal>
         </section>
     );
 }

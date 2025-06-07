@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { navigations } from "@/lib/helper";
 import { useTheme } from "@/lib/context/theme";
+import { useIsTablet } from "@/lib/hooks/tablet";
 import Image from "next/image";
 import Container from "@/elements/container/container";
 import style from "./style.module.scss";
@@ -10,25 +11,9 @@ import ButtonScroll from "@/elements/button/scroll/scroll";
 
 export default function Header({ sectionRefs, activeSection }) {
     const { isDark } = useTheme();
+    const isTablet = useIsTablet();
     const [isOpen, setIsOpen] = useState(false);
-    const [isMobile, setIsMobile] = useState(false);
     const logo = isDark ? "/logo-white.png" : "/logo-transparent.png";
-    // const [scrolled, setScrolled] = useState(false);
-
-    // useEffect(() => {
-    //     const onScroll = () => {
-    //         setScrolled(activeSection !== "hero");
-    //     };
-    //     window.addEventListener('scroll', onScroll);
-    //     return () => window.removeEventListener('scroll', onScroll);
-    // }, [activeSection]);
-
-    useEffect(() => {
-        const checkMobile = () => setIsMobile(window.innerWidth <= 992);
-        checkMobile();
-        window.addEventListener("resize", checkMobile);
-        return () => window.removeEventListener("resize", checkMobile);
-    }, []);
 
     const scrollToSection = (key) => {
         const ref = sectionRefs[key];
@@ -47,7 +32,7 @@ export default function Header({ sectionRefs, activeSection }) {
                 </Link>
 
                 <div className={style.right}>
-                    {isMobile ? (
+                    {isTablet ? (
                         activeSection === "hero" ? (
                             <ToggleMode />
                         ) : (
@@ -66,9 +51,9 @@ export default function Header({ sectionRefs, activeSection }) {
                         )
                     )}
 
-                    {!(activeSection === "hero" && !isMobile) && (
-                        <ul className={`${style.navigation} ${isDark ? style.dark : style.light} ${isOpen || !isMobile ? style.show : ""}`}>
-                            {(!isMobile || (isMobile && activeSection !== "hero")) &&
+                    {!(activeSection === "hero" && !isTablet) && (
+                        <ul className={`${style.navigation} ${isDark ? style.dark : style.light} ${isOpen || !isTablet ? style.show : ""}`}>
+                            {(!isTablet || (isTablet && activeSection !== "hero")) &&
                                 navigations.map(({ label, key }) => (
                                     <li key={key}>
                                         <button
@@ -79,7 +64,7 @@ export default function Header({ sectionRefs, activeSection }) {
                                         </button>
                                     </li>
                                 ))}
-                            {!(isMobile && activeSection === "hero") && (
+                            {!(isTablet && activeSection === "hero") && (
                                 <li><ToggleMode /></li>
                             )}
                         </ul>
