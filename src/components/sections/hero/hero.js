@@ -131,7 +131,7 @@ export default function Hero({ sectionRefs, sectionRef }) {
                             theme={isDark ? "dark" : "light"}
                             onClick={downloadResume}
                             disabled={loading}
-                            className={style.download}
+                            className={`${style.download} ${isDark ? style.dark : style.light}`}
                         >
                             {loading ? (
                                 <span>
