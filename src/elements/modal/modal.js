@@ -1,10 +1,8 @@
 import { useEffect } from 'react';
 import style from './style.module.scss';
-import { useTheme } from '@/lib/context/theme';
+import SvgIcon from '../icon/svg';
 
-export default function ScrollableModal({ isOpen, onClose, title, children }) {
-    const { isDark } = useTheme();
-
+export default function ScrollableModal({ isOpen, onClose, title, children, theme }) {
     useEffect(() => {
         if (isOpen) document.body.style.overflow = 'hidden';
         else document.body.style.overflow = 'auto';
@@ -14,9 +12,9 @@ export default function ScrollableModal({ isOpen, onClose, title, children }) {
 
     return (
         <div className={style.overlay} onClick={onClose}>
-            <div className={`${style.modal} ${isDark ? style.dark : style.light}`} onClick={(e) => e.stopPropagation()}>
+            <div className={`${style.modal} ${style[theme]}`} onClick={(e) => e.stopPropagation()}>
                 <button className={style.closeBtn} onClick={onClose}>
-                    <svg width="12" height="20" viewBox="0 0 16 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.0594 16.9408C15.6453 17.5268 15.6453 18.476 15.0594 19.0619C14.7688 19.3549 14.3844 19.5002 14 19.5002C13.6156 19.5002 13.2322 19.3537 12.9397 19.0607L8 14.1236L3.06078 19.0596C2.76781 19.3549 2.38391 19.5002 2 19.5002C1.61609 19.5002 1.23266 19.3549 0.939453 19.0596C0.353516 18.4736 0.353516 17.5244 0.939453 16.9385L5.88008 11.9978L0.939453 7.05957C0.353516 6.47363 0.353516 5.52441 0.939453 4.93848C1.52539 4.35254 2.47461 4.35254 3.06055 4.93848L8 9.88144L12.9406 4.94082C13.5266 4.35488 14.4758 4.35488 15.0617 4.94082C15.6477 5.52676 15.6477 6.47598 15.0617 7.06191L10.1211 12.0025L15.0594 16.9408Z" fill="black" /></svg>
+                    <SvgIcon url={"/close.svg"} />
                 </button>
                 <div className={style.contentwrapper}>
                     <h3 className={style.modaltitle}>{title}</h3>

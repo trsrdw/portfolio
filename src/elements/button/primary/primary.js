@@ -1,9 +1,7 @@
 import { useState } from "react";
-import { useTheme } from "@/lib/context/theme";
 import style from "./style.module.scss";
 
-export default function ButtonPrimary({ children, className, onClick }) {
-    const { isDark } = useTheme();
+export default function ButtonPrimary({ children, className, onClick, theme }) {
     const [clicked, setClicked] = useState(false);
 
     const handleClick = (e) => {
@@ -13,7 +11,7 @@ export default function ButtonPrimary({ children, className, onClick }) {
     };
 
     return (
-        <button onClick={handleClick} className={`${style.primary} ${isDark ? style.dark : style.light} ${className} ${clicked ? style.clicked : ""}`}>
+        <button onClick={handleClick} className={`${style.primary} ${style[theme]} ${className} ${clicked ? style.clicked : ""}`}>
             {children}
         </button>
     );

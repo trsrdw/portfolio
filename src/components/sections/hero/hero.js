@@ -41,11 +41,12 @@ export default function Hero({ sectionRefs, sectionRef }) {
                 </div>
 
                 <div className={style.cta}>
-                    <ButtonPrimary className={style.dig} onClick={() => scrollToSection("about")}><span>Dig a little deeper</span><span className={style.emoji}>🕵🏻</span></ButtonPrimary>
+                    <ButtonPrimary className={style.dig} theme={isDark ? "dark" : "light"} onClick={() => scrollToSection("about")}><span>Dig a little deeper</span><span className={style.emoji}>🕵🏻</span></ButtonPrimary>
                     <ButtonSecondary
+                        theme={isDark ? "dark" : "light"}
                         onClick={downloadResume}
                         disabled={loading}
-                        className={`${style.download} ${isDark ? style.dark : style.light}`}
+                        className={style.download}
                     >
                         {loading ? (
                             <span>

@@ -51,7 +51,7 @@ export default function Projects({ sectionRef }) {
                                         </div>
                                     ))}
                                 </div>
-                                <ButtonPrimary onClick={() => handleProjectClick(project)} className={style.learn}>
+                                <ButtonPrimary onClick={() => handleProjectClick(project)} className={style.learn} theme={isDark ? "dark" : "light"}>
                                     <span>Learn More</span>
                                     <SvgIcon url={"/arrow-right.svg"} />
                                 </ButtonPrimary>
@@ -79,7 +79,7 @@ export default function Projects({ sectionRef }) {
                                         </div>
                                     ))}
                                 </div>
-                                <ButtonPrimary onClick={() => handleProjectClick(project)} className={style.learn}>
+                                <ButtonPrimary onClick={() => handleProjectClick(project)} className={style.learn} theme={isDark ? "dark" : "light"}>
                                     <span>Learn More</span>
                                     <SvgIcon url={"/arrow-right.svg"} />
                                 </ButtonPrimary>
@@ -93,6 +93,7 @@ export default function Projects({ sectionRef }) {
                 isOpen={isModalOpen}
                 onClose={closeModal}
                 title={selectedProject?.title || ""}
+                theme={isDark ? "dark" : "light"}
             >
                 {selectedProject && (
                     <div className={`${style.custommodal} ${isDark ? style.dark : style.light}`}>

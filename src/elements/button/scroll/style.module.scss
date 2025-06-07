@@ -5,7 +5,9 @@
     bottom: 1rem;
     right: 1rem;
     align-items: center;
-    border: 2px solid;
+    // border: 2px solid;
+    background: none;
+    border: none;
     border-radius: 8px;
     box-sizing: border-box;
     cursor: pointer;
@@ -21,7 +23,7 @@
     transition: .2s ease-out;
 
     &.dark {
-        background-color: #111;
+        // background-color: rgba(#111, 0.3);
         border-color: #000;
         color: $white;
 
@@ -33,7 +35,7 @@
     }
 
     &.light {
-        background-color: $white;
+        // background-color: rgba($white, 0.3);
         border-color: $primary;
         color: $primary;
 
