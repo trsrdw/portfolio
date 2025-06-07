@@ -92,60 +92,58 @@ export default function Hero({ sectionRefs, sectionRef }) {
 
     return (
         <section ref={sectionRef} className={style.wrapper}>
-            <Container className={style.content}>
+            <motion.div
+                className={style.framer}
+                ref={heroRef}
+                variants={containerVariant}
+                initial="hidden"
+                animate={controls}
+            >
+                {/* Photo */}
                 <motion.div
-                    className={style.framer}
-                    ref={heroRef}
-                    variants={containerVariant}
-                    initial="hidden"
-                    animate={controls}
+                    className={`${style.photo} ${isDark ? style.dark : style.light}`}
+                    variants={fadeScale}
                 >
-                    {/* Photo */}
-                    <motion.div
-                        className={`${style.photo} ${isDark ? style.dark : style.light}`}
-                        variants={fadeScale}
-                    >
-                        <Image src={"/tiara.png"} width={295} height={520} alt={"Tiara"} priority />
+                    <Image src={"/tiara.png"} width={295} height={520} alt={"Tiara"} priority />
+                </motion.div>
+
+                {/* Heading */}
+                <motion.div className={style.heading} variants={fadeScale}>
+                    <h1>Tiara Sari Dewi</h1>
+                    <p>Hi! I&apos;m a Frontend Developer based in Bandung, Indonesia.</p>
+                </motion.div>
+
+                {/* CTA */}
+                <motion.div className={style.cta} variants={fadeScaleButtons}>
+                    <motion.div variants={bounceVariant}>
+                        <ButtonPrimary
+                            className={style.dig}
+                            theme={isDark ? "dark" : "light"}
+                            onClick={() => scrollToSection("about")}
+                        >
+                            <span>Dig a little deeper</span>
+                            <span className={style.emoji}>🕵🏻</span>
+                        </ButtonPrimary>
                     </motion.div>
 
-                    {/* Heading */}
-                    <motion.div className={style.heading} variants={fadeScale}>
-                        <h1>Tiara Sari Dewi</h1>
-                        <p>Hi! I&apos;m a Frontend Developer based in Bandung, Indonesia.</p>
-                    </motion.div>
-
-                    {/* CTA */}
-                    <motion.div className={style.cta} variants={fadeScaleButtons}>
-                        <motion.div variants={bounceVariant}>
-                            <ButtonPrimary
-                                className={style.dig}
-                                theme={isDark ? "dark" : "light"}
-                                onClick={() => scrollToSection("about")}
-                            >
-                                <span>Dig a little deeper</span>
-                                <span className={style.emoji}>🕵🏻</span>
-                            </ButtonPrimary>
-                        </motion.div>
-
-                        <motion.div variants={bounceVariant}>
-                            <ButtonSecondary
-                                theme={isDark ? "dark" : "light"}
-                                onClick={downloadResume}
-                                disabled={loading}
-                                className={style.download}
-                            >
-                                {loading ? (
-                                    <span>
-                                        Fetching the clues... <span className={style.spinner}></span>
-                                    </span>
-                                ) : (
-                                    <span>Snoop the résumé 📄</span>
-                                )}
-                            </ButtonSecondary>
-                        </motion.div>
+                    <motion.div variants={bounceVariant}>
+                        <ButtonSecondary
+                            theme={isDark ? "dark" : "light"}
+                            onClick={downloadResume}
+                            disabled={loading}
+                            className={style.download}
+                        >
+                            {loading ? (
+                                <span>
+                                    Fetching the clues... <span className={style.spinner}></span>
+                                </span>
+                            ) : (
+                                <span>Snoop the résumé 📄</span>
+                            )}
+                        </ButtonSecondary>
                     </motion.div>
                 </motion.div>
-            </Container>
+            </motion.div>
         </section>
     );
 }
