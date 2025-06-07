@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { motion, useAnimation, useInView } from "framer-motion";
 import { useTheme } from "@/lib/context/theme";
 import Image from "next/image";
 import Container from "@/elements/container/container";
-import style from "./style.module.scss";
 import ButtonPrimary from "@/elements/button/primary/primary";
 import ButtonSecondary from "@/elements/button/secondary/secondary";
+import style from "./style.module.scss";
 
 export default function Hero({ sectionRefs, sectionRef }) {
     const { isDark } = useTheme();
@@ -28,38 +29,122 @@ export default function Hero({ sectionRefs, sectionRef }) {
         setTimeout(() => setLoading(false), 2000);
     };
 
+    const controls = useAnimation();
+    const heroRef = useRef(null);
+    const isInView = useInView(heroRef, { threshold: 0.3 });
+
+    useEffect(() => {
+        if (isInView) {
+            controls.start("visible");
+        } else {
+            controls.start("hidden");
+        }
+    }, [isInView, controls]);
+
+    const containerVariant = {
+        hidden: {},
+        visible: {
+            transition: {
+                staggerChildren: 0.4,
+            },
+        },
+    };
+
+    const fadeScale = {
+        hidden: { opacity: 0, scale: 0.95 },
+        visible: {
+            opacity: 1,
+            scale: 1,
+            transition: {
+                type: "spring",
+                stiffness: 100,
+                damping: 15,
+            },
+        },
+    };
+
+    const fadeScaleButtons = {
+        hidden: { opacity: 0, scale: 0.95 },
+        visible: {
+            opacity: 1,
+            scale: 1,
+            transition: {
+                type: "spring",
+                stiffness: 100,
+                damping: 15,
+                staggerChildren: 0.4,
+            },
+        },
+    };
+
+    const bounceVariant = {
+        hidden: { opacity: 0, y: 30 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                type: "spring",
+                stiffness: 150,
+                damping: 12,
+            },
+        },
+    };
+
     return (
         <section ref={sectionRef} className={style.wrapper}>
             <Container className={style.content}>
-                <div className={`${style.photo} ${isDark ? style.dark : style.light}`}>
-                    <Image src={"/tiara.png"} width={295} height={520} alt={"Tiara"} priority />
-                </div>
-
-                <div className={style.heading}>
-                    <h1>Tiara Sari Dewi</h1>
-                    <p>Hi! I&apos;m a Frontend Developer based in Bandung, Indonesia.</p>
-                </div>
-
-                <div className={style.cta}>
-                    <ButtonPrimary className={style.dig} theme={isDark ? "dark" : "light"} onClick={() => scrollToSection("about")}><span>Dig a little deeper</span><span className={style.emoji}>🕵🏻</span></ButtonPrimary>
-                    <ButtonSecondary
-                        theme={isDark ? "dark" : "light"}
-                        onClick={downloadResume}
-                        disabled={loading}
-                        className={style.download}
+                <motion.div
+                    className={style.framer}
+                    ref={heroRef}
+                    variants={containerVariant}
+                    initial="hidden"
+                    animate={controls}
+                >
+                    {/* Photo */}
+                    <motion.div
+                        className={`${style.photo} ${isDark ? style.dark : style.light}`}
+                        variants={fadeScale}
                     >
-                        {loading ? (
-                            <span>
-                                Fetching the clues... <span className={style.spinner}></span>
-                            </span>
-                        ) : (
-                            <>
-                                <span>Snoop the résumé 📄</span>
-                            </>
-                        )}
-                    </ButtonSecondary>
-                </div>
+                        <Image src={"/tiara.png"} width={295} height={520} alt={"Tiara"} priority />
+                    </motion.div>
 
+                    {/* Heading */}
+                    <motion.div className={style.heading} variants={fadeScale}>
+                        <h1>Tiara Sari Dewi</h1>
+                        <p>Hi! I&apos;m a Frontend Developer based in Bandung, Indonesia.</p>
+                    </motion.div>
+
+                    {/* CTA */}
+                    <motion.div className={style.cta} variants={fadeScaleButtons}>
+                        <motion.div variants={bounceVariant}>
+                            <ButtonPrimary
+                                className={style.dig}
+                                theme={isDark ? "dark" : "light"}
+                                onClick={() => scrollToSection("about")}
+                            >
+                                <span>Dig a little deeper</span>
+                                <span className={style.emoji}>🕵🏻</span>
+                            </ButtonPrimary>
+                        </motion.div>
+
+                        <motion.div variants={bounceVariant}>
+                            <ButtonSecondary
+                                theme={isDark ? "dark" : "light"}
+                                onClick={downloadResume}
+                                disabled={loading}
+                                className={style.download}
+                            >
+                                {loading ? (
+                                    <span>
+                                        Fetching the clues... <span className={style.spinner}></span>
+                                    </span>
+                                ) : (
+                                    <span>Snoop the résumé 📄</span>
+                                )}
+                            </ButtonSecondary>
+                        </motion.div>
+                    </motion.div>
+                </motion.div>
             </Container>
         </section>
     );

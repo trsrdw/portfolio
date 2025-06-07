@@ -122,7 +122,7 @@ $dark-yellow-GFDP: #F57F00;
 }
 
 @mixin mobile_xs {
-    @media only screen and (max-width: 450px) {
+    @media only screen and (max-width: 420px) {
         @content;
     }
 }

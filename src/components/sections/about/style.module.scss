@@ -67,7 +67,7 @@
         border-radius: 8px;
         height: 120px;
         width: calc((100% - 64px) / 5);
-        transition: .2s ease-out;
+        transition: box-shadow .2s ease-out;
 
         &::after {
             content: none;

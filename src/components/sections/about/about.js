@@ -4,47 +4,148 @@ import Container from "@/elements/container/container";
 import style from "./style.module.scss";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useRef } from "react";
+import { motion, useAnimation, useInView } from "framer-motion";
 
 export default function About({ sectionRef }) {
     const { isDark } = useTheme();
+
+    // Refs and animation controls
+    const expRef = useRef(null);
+    const expControls = useAnimation();
+    const expInView = useInView(expRef, { threshold: 0.2 });
+
+    const eduRef = useRef(null);
+    const eduControls = useAnimation();
+    const eduInView = useInView(eduRef, { threshold: 0.2 });
+
+    const techRef = useRef(null);
+    const techControls = useAnimation();
+    const techInView = useInView(techRef, { threshold: 0.2 });
+
+    useEffect(() => {
+        if (expInView) expControls.start("visible");
+        else expControls.start("hidden");
+    }, [expInView, expControls]);
+
+    useEffect(() => {
+        if (eduInView) eduControls.start("visible");
+        else eduControls.start("hidden");
+    }, [eduInView, eduControls]);
+
+    useEffect(() => {
+        if (techInView) techControls.start("visible");
+        else techControls.start("hidden");
+    }, [techInView, techControls]);
+
+    // Variants
+    const containerVariant = {
+        hidden: {},
+        visible: {
+            transition: {
+                staggerChildren: 0.2,
+            },
+        },
+    };
+
+    const fadeUpVariant = {
+        hidden: { opacity: 0, y: 20 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                type: "spring",
+                stiffness: 90,
+                damping: 20,
+            },
+        },
+    };
+
+    const flipUpVariant = {
+        hidden: { opacity: 0, rotateX: 90 },
+        visible: {
+            opacity: 1,
+            rotateX: 0,
+            transition: {
+                type: "spring",
+                stiffness: 110,
+                damping: 16,
+            },
+        },
+    };
 
     return (
         <section ref={sectionRef} className={style.wrapper}>
             <Container className={style.content}>
                 <h2>About</h2>
-                <div className={style.section}>
-                    <h3 className={style.title}>Experiences</h3>
-                    <div className={style.experiences}>
+
+                {/* Experiences */}
+                <motion.div
+                    ref={expRef}
+                    variants={containerVariant}
+                    initial="hidden"
+                    animate={expControls}
+                    className={style.section}
+                >
+                    <motion.h3 className={style.title} variants={fadeUpVariant}>
+                        Experiences
+                    </motion.h3>
+                    <motion.div className={style.experiences} variants={containerVariant}>
                         {experiences.map((exp, index) => (
-                            <div className={style.experience} key={index}>
+                            <motion.div
+                                className={style.experience}
+                                key={index}
+                                variants={fadeUpVariant}
+                            >
                                 <div className={style.logo}>
-                                    <Image src={exp.logo.path} width={exp.logo.width} height={exp.logo.height} alt={exp.logo.alt} />
+                                    <Image
+                                        src={exp.logo.path}
+                                        width={exp.logo.width}
+                                        height={exp.logo.height}
+                                        alt={exp.logo.alt}
+                                    />
                                 </div>
                                 <div className={style.info}>
                                     <h3 className={style.company}>{exp.company}</h3>
                                     <div className={style.positions}>
-                                        <div className={style.positions}>
-                                            {exp.position.map((pos, index) => (
-                                                <div className={style.position} key={index}>
-                                                    <h4 className={style.as}>{pos.title}</h4>
-                                                    <p>{pos.year}</p>
-                                                </div>
-                                            ))}
-                                        </div>
+                                        {exp.position.map((pos, index) => (
+                                            <div className={style.position} key={index}>
+                                                <h4 className={style.as}>{pos.title}</h4>
+                                                <p>{pos.year}</p>
+                                            </div>
+                                        ))}
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
                         ))}
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
 
-                <div className={style.section}>
-                    <h3 className={style.title}>Education</h3>
-                    <div className={style.educations}>
+                {/* Education */}
+                <motion.div
+                    ref={eduRef}
+                    variants={containerVariant}
+                    initial="hidden"
+                    animate={eduControls}
+                    className={style.section}
+                >
+                    <motion.h3 className={style.title} variants={fadeUpVariant}>
+                        Education
+                    </motion.h3>
+                    <motion.div className={style.educations} variants={containerVariant}>
                         {educations.map((edu, index) => (
-                            <div className={style.education} key={index}>
+                            <motion.div
+                                className={style.education}
+                                key={index}
+                                variants={fadeUpVariant}
+                            >
                                 <div className={style.logo}>
-                                    <Image src={"/exp/widyatama-logo.png"} width={400} height={367} alt={"Logo Widyatama"} />
+                                    <Image
+                                        src={"/exp/widyatama-logo.png"}
+                                        width={400}
+                                        height={367}
+                                        alt={"Logo Widyatama"}
+                                    />
                                 </div>
                                 <div className={style.desc}>
                                     <h3>{edu.school}</h3>
@@ -53,24 +154,38 @@ export default function About({ sectionRef }) {
                                         <span className={style.year}>{edu.year}</span>
                                     </p>
                                 </div>
-                            </div>
+                            </motion.div>
                         ))}
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
 
-                <div className={style.techs}>
-                    <h3>Current Technologies</h3>
-                    <div className={style.iconwrapper}>
+                {/* Technologies */}
+                <motion.div
+                    ref={techRef}
+                    variants={containerVariant}
+                    initial="hidden"
+                    animate={techControls}
+                    className={style.techs}
+                >
+                    <motion.h3 variants={fadeUpVariant}>Current Technologies</motion.h3>
+                    <motion.div className={style.iconwrapper} variants={containerVariant}>
                         {tools.map((tool, index) => (
-                            <Link href={tool.link} target={"_blank"} className={`${style.block} ${isDark ? style.dark : style.light}`} key={index}>
+                            <motion.a
+                                href={tool.link}
+                                target="_blank"
+                                rel="noreferrer"
+                                className={`${style.block} ${isDark ? style.dark : style.light}`}
+                                key={index}
+                                variants={flipUpVariant}
+                            >
                                 <div className={style.icon}>
                                     <Image src={tool.logo} alt={`Logo ${tool.label}`} fill />
                                 </div>
                                 <p>{tool.label}</p>
-                            </Link>
+                            </motion.a>
                         ))}
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
             </Container>
         </section>
     );

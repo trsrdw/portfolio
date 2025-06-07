@@ -13,8 +13,15 @@
     align-items: center;
     max-width: 720px;
     height: 100%;
-    overflow: hidden;
+    // overflow: hidden;
     position: relative;
+    gap: 1.5rem;
+}
+
+.framer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 1.5rem;
 }
 
@@ -123,6 +130,12 @@
         width: 120px;
     }
 }
+
+// .photo,
+// .heading,
+// .cta {
+//     opacity: 0;
+// }
 
 @include mobile {
     .cta {
