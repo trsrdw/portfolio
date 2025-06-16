@@ -107,6 +107,20 @@ export const projects = [
         items: [
             {
                 id: 11,
+                banner: "/projects/zentry.png",
+                title: "Zentry",
+                description: "A web app that lets users RSVP to events and check in using a QR code, with attendance tracking and admin tools.",
+                tools: [
+                    { label: "Next.js", logo: "/tools/next.png" },
+                    { label: "Typescript", logo: "/tools/typescript.png" },
+                    { label: "Sass", logo: "/tools/sass.png" },
+                    { label: "MySQL", logo: "/tools/mysql.png" },
+                ],
+                link: "",
+                status: "Development",
+            },
+            {
+                id: 12,
                 banner: "/projects/portfolio.png",
                 title: "Portfolio",
                 description: "A personal portfolio website showcasing selected projects, built to demonstrate frontend development skills and responsive design.",
@@ -119,7 +133,7 @@ export const projects = [
                 status: "Live",
             },
             {
-                id: 12,
+                id: 13,
                 banner: "/projects/flippo.png",
                 title: "Final Project: Flippo App",
                 description: "A recommendation tool developed as a final assignment project. The app helps users choose the most suitable laptop based on their preferences and requirements. It features user authentication using Google OAuth and stores data using Firebase's NoSQL database.",
@@ -134,7 +148,7 @@ export const projects = [
                 status: "Archived",
             },
             {
-                id: 13,
+                id: 14,
                 banner: "/projects/mm.png",
                 title: "Assignment: Money Management",
                 description: "A simple web application developed for budgeting and expense tracking. Users can record income and expenses, categorize transactions, and view financial summaries.",
@@ -148,7 +162,7 @@ export const projects = [
                 status: "Archived",
             },
             {
-                id: 14,
+                id: 15,
                 banner: "/projects/gebook.png",
                 title: "Assignment: GEBook",
                 description: "A simple online bookstore developed as an assignment project. It allows users to browse available books, view details, and simulate purchases through a clean and user-friendly interface.",
