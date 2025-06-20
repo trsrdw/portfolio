@@ -107,8 +107,8 @@ export const projects = [
         items: [
             {
                 id: 11,
-                banner: "/projects/zentry.png",
-                title: "Zentry",
+                banner: "/projects/invee.png",
+                title: "invee",
                 description: "A web app that lets users RSVP to events and check in using a QR code, with attendance tracking and admin tools.",
                 tools: [
                     { label: "Next.js", logo: "/tools/next.png" },
