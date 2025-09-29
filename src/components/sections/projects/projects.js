@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useTheme } from "@/lib/context/theme";
 import { projects } from "@/lib/helper";
 import Link from "next/link";
@@ -8,7 +8,6 @@ import Modal from "@/elements/modal/modal";
 import ButtonPrimary from "@/elements/button/primary/primary";
 import SvgIcon from "@/elements/icon/svg";
 import Image from "next/image";
-import { motion, useAnimation, useInView } from "framer-motion";
 
 export default function Projects({ sectionRef }) {
     const { isDark } = useTheme();
@@ -28,73 +27,18 @@ export default function Projects({ sectionRef }) {
         setSelectedProject(null);
     };
 
-    // Animation controls and refs for featured and personal sections
-    const featuredControls = useAnimation();
-    const featuredRef = useRef(null);
-    const featuredInView = useInView(featuredRef, { threshold: 0.2 });
-
-    const personalControls = useAnimation();
-    const personalRef = useRef(null);
-    const personalInView = useInView(personalRef, { threshold: 0.2 });
-
-    useEffect(() => {
-        if (featuredInView) {
-            featuredControls.start("visible");
-        } else {
-            featuredControls.start("hidden");
-        }
-    }, [featuredInView, featuredControls]);
-
-    useEffect(() => {
-        if (personalInView) {
-            personalControls.start("visible");
-        } else {
-            personalControls.start("hidden");
-        }
-    }, [personalInView, personalControls]);
-
-    // Variants
-    const containerVariant = {
-        hidden: {},
-        visible: {
-            transition: {
-                staggerChildren: 0.25,
-                delayChildren: 0.3,
-            },
-        },
-    };
-
-    const itemVariant = {
-        hidden: { opacity: 0, y: 20 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                type: "spring",
-                stiffness: 80,
-                damping: 20,
-            },
-        },
-    };
-
     return (
         <section ref={sectionRef} className={style.wrapper}>
             <Container className={style.content}>
                 <h2>Projects</h2>
 
+                {/* Featured */}
                 <div className={style.section}>
                     <h3>Featured</h3>
-                    <motion.div
-                        ref={featuredRef}
-                        className={style.projects}
-                        variants={containerVariant}
-                        initial="hidden"
-                        animate={featuredControls}
-                    >
+                    <div className={style.projects}>
                         {features.items.map((project, i) => (
-                            <motion.div
+                            <div
                                 key={i}
-                                variants={itemVariant}
                                 className={`${style.projectItem} ${isDark ? style.dark : style.light}`}
                             >
                                 <div className={style.banner}>
@@ -118,24 +62,18 @@ export default function Projects({ sectionRef }) {
                                     <span>Learn More</span>
                                     <SvgIcon url={"/arrow-right.svg"} />
                                 </ButtonPrimary>
-                            </motion.div>
+                            </div>
                         ))}
-                    </motion.div>
+                    </div>
                 </div>
 
+                {/* Personal */}
                 <div className={style.section}>
                     <h3>Personal</h3>
-                    <motion.div
-                        ref={personalRef}
-                        className={style.projects}
-                        variants={containerVariant}
-                        initial="hidden"
-                        animate={personalControls}
-                    >
+                    <div className={style.projects}>
                         {personals.items.map((project, i) => (
-                            <motion.div
+                            <div
                                 key={i}
-                                variants={itemVariant}
                                 className={`${style.projectItem} ${isDark ? style.dark : style.light}`}
                             >
                                 <div className={style.banner}>
@@ -159,12 +97,13 @@ export default function Projects({ sectionRef }) {
                                     <span>Learn More</span>
                                     <SvgIcon url={"/arrow-right.svg"} />
                                 </ButtonPrimary>
-                            </motion.div>
+                            </div>
                         ))}
-                    </motion.div>
+                    </div>
                 </div>
             </Container>
 
+            {/* Modal */}
             <Modal
                 isOpen={isModalOpen}
                 onClose={closeModal}
