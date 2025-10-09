@@ -75,7 +75,7 @@ export default function Projects() {
                         variants={cardWrapperVariant}
                         initial="hidden"
                         whileInView="visible"
-                        viewport={{ once: true, amount: 0.3 }}
+                        viewport={{ once: true, amount: 0.2 }}
                     >
                         {features.items.map((project, i) => (
                             <motion.div
@@ -122,7 +122,7 @@ export default function Projects() {
                         variants={cardWrapperVariant}
                         initial="hidden"
                         whileInView="visible"
-                        viewport={{ once: true, amount: 0.3 }}
+                        viewport={{ once: true, amount: 0.2 }}
                     >
                         {personals.items.map((project, i) => (
                             <motion.div
