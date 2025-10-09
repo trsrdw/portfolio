@@ -6,7 +6,7 @@ import Container from "@/elements/container/container";
 import style from "./style.module.scss";
 import SvgIcon from "@/elements/icon/svg";
 
-export default function Contacts({ sectionRef }) {
+export default function Contacts() {
     const { isDark } = useTheme();
 
     // Animation setup
@@ -55,7 +55,7 @@ export default function Contacts({ sectionRef }) {
     };
 
     return (
-        <section ref={sectionRef} className={style.wrapper}>
+        <section id="contacts" className={style.wrapper}>
             <Container className={style.content}>
                 {/* Uncomment if you want a heading */}
                 {/* <motion.h2

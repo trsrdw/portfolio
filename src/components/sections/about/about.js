@@ -3,11 +3,10 @@ import { educations, experiences, tools } from "@/lib/helper";
 import Container from "@/elements/container/container";
 import style from "./style.module.scss";
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
 
-export default function About({ sectionRef }) {
+export default function About() {
     const { isDark } = useTheme();
 
     // Refs and animation controls
@@ -75,7 +74,7 @@ export default function About({ sectionRef }) {
     };
 
     return (
-        <section ref={sectionRef} className={style.wrapper}>
+        <section id="about" className={style.wrapper}>
             <Container className={style.content}>
                 <h2>About</h2>
 

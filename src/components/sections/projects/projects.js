@@ -10,7 +10,7 @@ import SvgIcon from "@/elements/icon/svg";
 import Image from "next/image";
 import { motion, useAnimation, useInView } from "framer-motion";
 
-export default function Projects({ sectionRef }) {
+export default function Projects() {
     const { isDark } = useTheme();
     const personals = projects.find((p) => p.type === "personal");
     const features = projects.find((p) => p.type === "featured");
@@ -78,7 +78,7 @@ export default function Projects({ sectionRef }) {
     };
 
     return (
-        <section ref={sectionRef} className={style.wrapper}>
+        <section id="projects" className={style.wrapper}>
             <Container className={style.content}>
                 <h2>Projects</h2>
 

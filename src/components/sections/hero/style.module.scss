@@ -1,8 +1,7 @@
 @use "@/styles/mixin.scss" as *;
 
 .wrapper {
-    height: 100vh;
-    scroll-snap-align: start;
+    height: 100dvh;
     position: relative;
 }
 
