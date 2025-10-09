@@ -15,14 +15,11 @@ export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
     const [activeSection, setActiveSection] = useState("hero");
     const logo = isDark ? "/logo-white.png" : "/logo-transparent.png";
+    const [mounted, setMounted] = useState(false);
 
-    const scrollToSection = (id) => {
-        const element = document.getElementById(id);
-        if (element) {
-            element.scrollIntoView({ behavior: "smooth" });
-            setIsOpen(false);
-        }
-    };
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     useEffect(() => {
         const sectionElements = navigations
@@ -53,6 +50,16 @@ export default function Header() {
         sectionElements.forEach((el) => observer.observe(el));
         return () => observer.disconnect();
     }, []);
+
+    const scrollToSection = (id) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+            setIsOpen(false);
+        }
+    };
+
+    if (!mounted) return null;
 
     return (
         <nav className={`${style.wrapper} ${isDark ? style.dark : style.light} ${activeSection !== "hero" || isOpen ? style.bg : ""}`}>
