@@ -1,20 +1,25 @@
-import { useEffect, useState, useRef } from "react";
-import { motion, useAnimation, useInView } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
 import { useTheme } from "@/lib/context/theme";
 import Image from "next/image";
-import Container from "@/elements/container/container";
 import ButtonPrimary from "@/elements/button/primary/primary";
 import ButtonSecondary from "@/elements/button/secondary/secondary";
 import style from "./style.module.scss";
 
-export default function Hero({ sectionRefs, sectionRef }) {
+export default function Hero() {
     const { isDark } = useTheme();
     const [loading, setLoading] = useState(false);
 
-    const scrollToSection = (key) => {
-        const ref = sectionRefs[key];
-        if (ref && ref.current) {
-            ref.current.scrollIntoView({ behavior: "smooth" });
+    const controls = useAnimation();
+
+    useEffect(() => {
+        controls.start("visible");
+    }, [isDark, controls]);
+
+    const scrollToSection = (id) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
         }
     };
 
@@ -29,24 +34,11 @@ export default function Hero({ sectionRefs, sectionRef }) {
         setTimeout(() => setLoading(false), 2000);
     };
 
-    const controls = useAnimation();
-    const heroRef = useRef(null);
-    const isInView = useInView(heroRef, { threshold: 0.3 });
-
-    useEffect(() => {
-        if (isInView) {
-            controls.start("visible");
-        } else {
-            controls.start("hidden");
-        }
-    }, [isInView, controls]);
-
     const containerVariant = {
-        hidden: {},
+        hidden: { opacity: 0 },
         visible: {
-            transition: {
-                staggerChildren: 0.4,
-            },
+            opacity: 1,
+            transition: { staggerChildren: 0.4 },
         },
     };
 
@@ -91,13 +83,15 @@ export default function Hero({ sectionRefs, sectionRef }) {
     };
 
     return (
-        <section ref={sectionRef} className={style.wrapper}>
+        <section id="hero" className={style.wrapper}>
             <motion.div
+                key={isDark ? "dark" : "light"}
                 className={style.framer}
-                ref={heroRef}
                 variants={containerVariant}
                 initial="hidden"
                 animate={controls}
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.3 }}
             >
                 {/* Photo */}
                 <motion.div

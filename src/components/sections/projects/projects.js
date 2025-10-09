@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useTheme } from "@/lib/context/theme";
 import { projects } from "@/lib/helper";
 import Link from "next/link";
@@ -8,9 +8,9 @@ import Modal from "@/elements/modal/modal";
 import ButtonPrimary from "@/elements/button/primary/primary";
 import SvgIcon from "@/elements/icon/svg";
 import Image from "next/image";
-import { motion, useAnimation, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 
-export default function Projects({ sectionRef }) {
+export default function Projects() {
     const { isDark } = useTheme();
     const personals = projects.find((p) => p.type === "personal");
     const features = projects.find((p) => p.type === "featured");
@@ -28,73 +28,59 @@ export default function Projects({ sectionRef }) {
         setSelectedProject(null);
     };
 
-    // Animation controls and refs for featured and personal sections
-    const featuredControls = useAnimation();
-    const featuredRef = useRef(null);
-    const featuredInView = useInView(featuredRef, { threshold: 0.2 });
-
-    const personalControls = useAnimation();
-    const personalRef = useRef(null);
-    const personalInView = useInView(personalRef, { threshold: 0.2 });
-
-    useEffect(() => {
-        if (featuredInView) {
-            featuredControls.start("visible");
-        } else {
-            featuredControls.start("hidden");
-        }
-    }, [featuredInView, featuredControls]);
-
-    useEffect(() => {
-        if (personalInView) {
-            personalControls.start("visible");
-        } else {
-            personalControls.start("hidden");
-        }
-    }, [personalInView, personalControls]);
-
-    // Variants
-    const containerVariant = {
-        hidden: {},
+    const containerVariants = {
+        hidden: { opacity: 0 },
         visible: {
-            transition: {
-                staggerChildren: 0.25,
-                delayChildren: 0.3,
-            },
+            opacity: 1,
+            transition: { staggerChildren: 0.3 },
         },
     };
 
-    const itemVariant = {
-        hidden: { opacity: 0, y: 20 },
+    const itemVariants = {
+        hidden: { opacity: 0, y: 30 },
         visible: {
             opacity: 1,
             y: 0,
-            transition: {
-                type: "spring",
-                stiffness: 80,
-                damping: 20,
-            },
+            transition: { duration: 0.6, ease: "easeOut" },
         },
     };
 
+    const cardWrapperVariant = {
+        hidden: {},
+        visible: {
+            transition: { staggerChildren: 0.2, delayChildren: 0.4 },
+        },
+    };
+
+    const cardVariant = {
+        hidden: { y: 40, opacity: 0 },
+        visible: { y: 0, opacity: 1, transition: { duration: 0.6 } },
+    };
+
     return (
-        <section ref={sectionRef} className={style.wrapper}>
+        <section id="projects" className={style.wrapper}>
             <Container className={style.content}>
                 <h2>Projects</h2>
 
-                <div className={style.section}>
-                    <h3>Featured</h3>
+                <motion.div
+                    className={style.section}
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.3 }}
+                >
+                    <motion.h3 variants={itemVariants}>Featured</motion.h3>
                     <motion.div
-                        ref={featuredRef}
                         className={style.projects}
-                        variants={containerVariant}
+                        variants={cardWrapperVariant}
                         initial="hidden"
-                        animate={featuredControls}
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.3 }}
                     >
                         {features.items.map((project, i) => (
                             <motion.div
                                 key={i}
-                                variants={itemVariant}
+                                variants={cardVariant}
                                 className={`${style.projectItem} ${isDark ? style.dark : style.light}`}
                             >
                                 <div className={style.banner}>
@@ -121,21 +107,27 @@ export default function Projects({ sectionRef }) {
                             </motion.div>
                         ))}
                     </motion.div>
-                </div>
+                </motion.div>
 
-                <div className={style.section}>
-                    <h3>Personal</h3>
+                <motion.div
+                    className={style.section}
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.3 }}
+                >
+                    <motion.h3 variants={itemVariants}>Personal</motion.h3>
                     <motion.div
-                        ref={personalRef}
                         className={style.projects}
-                        variants={containerVariant}
+                        variants={cardWrapperVariant}
                         initial="hidden"
-                        animate={personalControls}
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.3 }}
                     >
                         {personals.items.map((project, i) => (
                             <motion.div
                                 key={i}
-                                variants={itemVariant}
+                                variants={cardVariant}
                                 className={`${style.projectItem} ${isDark ? style.dark : style.light}`}
                             >
                                 <div className={style.banner}>
@@ -162,7 +154,7 @@ export default function Projects({ sectionRef }) {
                             </motion.div>
                         ))}
                     </motion.div>
-                </div>
+                </motion.div>
             </Container>
 
             <Modal

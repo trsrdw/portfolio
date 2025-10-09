@@ -1,30 +1,18 @@
-import { useEffect, useRef } from "react";
-import { motion, useAnimation, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import { useTheme } from "@/lib/context/theme";
 import { contacts } from "@/lib/helper";
 import Container from "@/elements/container/container";
 import style from "./style.module.scss";
 import SvgIcon from "@/elements/icon/svg";
 
-export default function Contacts({ sectionRef }) {
+export default function Contacts() {
     const { isDark } = useTheme();
 
-    // Animation setup
-    const controls = useAnimation();
-    const ref = useRef(null);
-    const isInView = useInView(ref, { threshold: 0.8 });
-
-    useEffect(() => {
-        if (isInView) controls.start("visible");
-        else controls.start("hidden");
-    }, [isInView, controls]);
-
     const containerVariant = {
-        hidden: {},
+        hidden: { opacity: 0 },
         visible: {
-            transition: {
-                staggerChildren: 0.5,
-            },
+            opacity: 1,
+            transition: { staggerChildren: 0.3 },
         },
     };
 
@@ -55,29 +43,20 @@ export default function Contacts({ sectionRef }) {
     };
 
     return (
-        <section ref={sectionRef} className={style.wrapper}>
+        <section id="contacts" className={style.wrapper}>
             <Container className={style.content}>
-                {/* Uncomment if you want a heading */}
-                {/* <motion.h2
-                    ref={ref}
-                    variants={fadeUpVariant}
-                    initial="hidden"
-                    animate={controls}
-                >
-                    Contacts
-                </motion.h2> */}
+                <h2>Contacts</h2>
 
-                <motion.div
-
-                    className={style.frame}
-                    variants={containerVariant}
-                    initial="hidden"
-                    animate={controls}
-                >
-                    <motion.div className={style.iconwrapper} variants={containerVariant}>
+                <div className={style.frame}>
+                    <motion.div
+                        className={style.iconwrapper}
+                        variants={containerVariant}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.4 }}
+                    >
                         {contacts.map((contact, index) => (
                             <motion.a
-                                ref={ref}
                                 href={contact.link}
                                 target="_blank"
                                 rel="noreferrer"
@@ -97,13 +76,14 @@ export default function Contacts({ sectionRef }) {
                             </motion.a>
                         ))}
                     </motion.div>
-                </motion.div>
+                </div>
 
                 <motion.div
                     className={style.copyright}
                     variants={fadeUpVariant}
                     initial="hidden"
-                    animate={controls}
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.3 }}
                 >
                     <p>&copy; {new Date().getFullYear()} Tiara Sari Dewi. All rights reserved.</p>
                 </motion.div>

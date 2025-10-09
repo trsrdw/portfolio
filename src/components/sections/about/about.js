@@ -3,48 +3,46 @@ import { educations, experiences, tools } from "@/lib/helper";
 import Container from "@/elements/container/container";
 import style from "./style.module.scss";
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
 
-export default function About({ sectionRef }) {
+export default function About() {
     const { isDark } = useTheme();
 
     // Refs and animation controls
-    const expRef = useRef(null);
-    const expControls = useAnimation();
-    const expInView = useInView(expRef, { threshold: 0.2 });
+    // const expRef = useRef(null);
+    // const expControls = useAnimation();
+    // const expInView = useInView(expRef, { threshold: 0.2 });
 
-    const eduRef = useRef(null);
-    const eduControls = useAnimation();
-    const eduInView = useInView(eduRef, { threshold: 0.2 });
+    // const eduRef = useRef(null);
+    // const eduControls = useAnimation();
+    // const eduInView = useInView(eduRef, { threshold: 0.2 });
 
-    const techRef = useRef(null);
-    const techControls = useAnimation();
-    const techInView = useInView(techRef, { threshold: 0.2 });
+    // const techRef = useRef(null);
+    // const techControls = useAnimation();
+    // const techInView = useInView(techRef, { threshold: 0.2 });
 
-    useEffect(() => {
-        if (expInView) expControls.start("visible");
-        else expControls.start("hidden");
-    }, [expInView, expControls]);
+    // useEffect(() => {
+    //     if (expInView) expControls.start("visible");
+    //     else expControls.start("hidden");
+    // }, [expInView, expControls]);
 
-    useEffect(() => {
-        if (eduInView) eduControls.start("visible");
-        else eduControls.start("hidden");
-    }, [eduInView, eduControls]);
+    // useEffect(() => {
+    //     if (eduInView) eduControls.start("visible");
+    //     else eduControls.start("hidden");
+    // }, [eduInView, eduControls]);
 
-    useEffect(() => {
-        if (techInView) techControls.start("visible");
-        else techControls.start("hidden");
-    }, [techInView, techControls]);
+    // useEffect(() => {
+    //     if (techInView) techControls.start("visible");
+    //     else techControls.start("hidden");
+    // }, [techInView, techControls]);
 
     // Variants
     const containerVariant = {
-        hidden: {},
+        hidden: { opacity: 0 },
         visible: {
-            transition: {
-                staggerChildren: 0.2,
-            },
+            opacity: 1,
+            transition: { staggerChildren: 0.4 },
         },
     };
 
@@ -75,22 +73,22 @@ export default function About({ sectionRef }) {
     };
 
     return (
-        <section ref={sectionRef} className={style.wrapper}>
+        <section id="about" className={style.wrapper}>
             <Container className={style.content}>
                 <h2>About</h2>
 
                 {/* Experiences */}
                 <motion.div
-                    ref={expRef}
                     variants={containerVariant}
                     initial="hidden"
-                    animate={expControls}
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.3 }}
                     className={style.section}
                 >
                     <motion.h3 className={style.title} variants={fadeUpVariant}>
                         Experiences
                     </motion.h3>
-                    <motion.div className={style.experiences} variants={containerVariant}>
+                    <div className={style.experiences}>
                         {experiences.map((exp, index) => (
                             <motion.div
                                 className={style.experience}
@@ -118,21 +116,21 @@ export default function About({ sectionRef }) {
                                 </div>
                             </motion.div>
                         ))}
-                    </motion.div>
+                    </div>
                 </motion.div>
 
                 {/* Education */}
                 <motion.div
-                    ref={eduRef}
                     variants={containerVariant}
                     initial="hidden"
-                    animate={eduControls}
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.3 }}
                     className={style.section}
                 >
                     <motion.h3 className={style.title} variants={fadeUpVariant}>
                         Education
                     </motion.h3>
-                    <motion.div className={style.educations} variants={containerVariant}>
+                    <div className={style.educations}>
                         {educations.map((edu, index) => (
                             <motion.div
                                 className={style.education}
@@ -156,19 +154,19 @@ export default function About({ sectionRef }) {
                                 </div>
                             </motion.div>
                         ))}
-                    </motion.div>
+                    </div>
                 </motion.div>
 
                 {/* Technologies */}
                 <motion.div
-                    ref={techRef}
                     variants={containerVariant}
                     initial="hidden"
-                    animate={techControls}
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.3 }}
                     className={style.techs}
                 >
                     <motion.h3 variants={fadeUpVariant}>Current Technologies</motion.h3>
-                    <motion.div className={style.iconwrapper} variants={containerVariant}>
+                    <div className={style.iconwrapper}>
                         {tools.map((tool, index) => (
                             <motion.a
                                 href={tool.link}
@@ -184,7 +182,7 @@ export default function About({ sectionRef }) {
                                 <p>{tool.label}</p>
                             </motion.a>
                         ))}
-                    </motion.div>
+                    </div>
                 </motion.div>
             </Container>
         </section>

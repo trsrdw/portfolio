@@ -130,7 +130,7 @@
     pointer-events: none;
 }
 
-@include mobile {
+@include tablet {
     .navigation {
         position: absolute;
         top: 100%;
