@@ -67,7 +67,7 @@ export default function Projects() {
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, amount: 0.3 }}
+                    viewport={{ once: true, amount: 0.2 }}
                 >
                     <motion.h3 variants={itemVariants}>Featured</motion.h3>
                     <motion.div
@@ -114,7 +114,7 @@ export default function Projects() {
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, amount: 0.3 }}
+                    viewport={{ once: true, amount: 0.2 }}
                 >
                     <motion.h3 variants={itemVariants}>Personal</motion.h3>
                     <motion.div
