@@ -1,5 +1,5 @@
-import { useEffect, useState, useRef } from "react";
-import { motion, useAnimation, useInView } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
 import { useTheme } from "@/lib/context/theme";
 import Image from "next/image";
 import ButtonPrimary from "@/elements/button/primary/primary";
@@ -9,6 +9,12 @@ import style from "./style.module.scss";
 export default function Hero() {
     const { isDark } = useTheme();
     const [loading, setLoading] = useState(false);
+
+    const controls = useAnimation();
+
+    useEffect(() => {
+        controls.start("visible");
+    }, [isDark, controls]);
 
     const scrollToSection = (id) => {
         const element = document.getElementById(id);
@@ -79,11 +85,13 @@ export default function Hero() {
     return (
         <section id="hero" className={style.wrapper}>
             <motion.div
+                key={isDark ? "dark" : "light"}
                 className={style.framer}
                 variants={containerVariant}
                 initial="hidden"
+                animate={controls}
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: false, amount: 0.3 }}
             >
                 {/* Photo */}
                 <motion.div

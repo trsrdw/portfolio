@@ -124,12 +124,6 @@
     }
 }
 
-.photo,
-.heading,
-.cta {
-    opacity: 0;
-}
-
 @include mobile {
     .cta {
         flex-direction: column;
