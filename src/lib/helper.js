@@ -106,6 +106,19 @@ export const projects = [
         type: "personal",
         items: [
             {
+                id: 10,
+                banner: "/projects/ricknmorty.png",
+                title: "Rick and Morty Explorer",
+                description: "Dynamic character, episode, and location listings with search and pagination features, custom error handling (including dedicated error pages), fully responsive layout, and smooth loading states implemented with React Suspense and lazy loading.",
+                tools: [
+                    { label: "Next.js", logo: "/tools/next.png" },
+                    { label: "Typescript", logo: "/tools/typescript.png" },
+                    { label: "Sass", logo: "/tools/sass.png" },
+                ],
+                link: "https://ricknmorty.tiarasd.site/",
+                status: "Live",
+            },
+            {
                 id: 11,
                 banner: "/projects/invee.png",
                 title: "invee",
