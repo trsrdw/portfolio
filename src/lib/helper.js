@@ -19,6 +19,7 @@ export const tools = [
     { label: "React.js", logo: "/tools/react.png", link: "https://react.dev/" },
     { label: "Strapi", logo: "/tools/strapi.png", link: "https://strapi.io/" },
     { label: "Javascript", logo: "/tools/javascript.png", link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+    { label: "Typescript", logo: "/tools/typescript.png", link: "https://www.typescriptlang.org/" },
     { label: "Sass", logo: "/tools/sass.png", link: "https://sass-lang.com/" },
     { label: "Bootstrap", logo: "/tools/bootstrap-5.png", link: "https://getbootstrap.com/" },
     // { label: "Laravel", logo: "/tools/laravel.png", link: "https://laravel.com/" },
@@ -30,7 +31,7 @@ export const tools = [
     // { label: "Firebase", logo: "/tools/firebase.png", link: "https://firebase.google.com/" },
     // { label: "Github", logo: "/tools/github.png", link: "https://github.com/" },
     // { label: "Typescript", logo: "/tools/typescript.png", link: "https://www.typescriptlang.org/" },
-    { label: "Node.js", logo: "/tools/node.png", link: "https://nodejs.org/en" },
+    // { label: "Node.js", logo: "/tools/node.png", link: "https://nodejs.org/en" },
     { label: "Git", logo: "/tools/git.png", link: "https://git-scm.com/" },
 ];
 

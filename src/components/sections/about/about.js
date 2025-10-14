@@ -42,7 +42,7 @@ export default function About() {
         hidden: { opacity: 0 },
         visible: {
             opacity: 1,
-            transition: { staggerChildren: 0.4 },
+            transition: { staggerChildren: 0.3 },
         },
     };
 
@@ -66,8 +66,8 @@ export default function About() {
             rotateX: 0,
             transition: {
                 type: "spring",
-                stiffness: 110,
-                damping: 16,
+                stiffness: 140,
+                damping: 14,
             },
         },
     };
@@ -162,7 +162,7 @@ export default function About() {
                     variants={containerVariant}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, amount: 0.3 }}
+                    viewport={{ once: true, amount: 0.2 }}
                     className={style.techs}
                 >
                     <motion.h3 variants={fadeUpVariant}>Current Technologies</motion.h3>
