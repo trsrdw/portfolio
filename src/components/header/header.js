@@ -63,7 +63,7 @@ export default function Header() {
 
     return (
         <nav className={`${style.wrapper} ${isDark ? style.dark : style.light} ${activeSection !== "hero" || isOpen ? style.bg : ""}`}>
-            <Container className={style.content}>
+            <div className={style.content}>
                 <ButtonScroll
                     theme={isDark ? "dark" : "light"}
                     className={`${style.up} ${activeSection !== "hero" ? style.show : ""}`}
@@ -100,7 +100,7 @@ export default function Header() {
                         <li><ToggleMode /></li>
                     </ul>
                 </div>
-            </Container>
+            </div>
         </nav>
     );
 }
