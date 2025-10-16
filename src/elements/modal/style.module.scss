@@ -11,12 +11,15 @@
     justify-content: center;
     align-items: center;
     z-index: 1000;
+
+    overflow-y: auto;
+    // padding: 2rem 1rem;
 }
 
 .modal {
     max-width: 600px;
-    max-height: 80vh;
-    overflow: hidden;
+    overflow: auto; // allow internal scroll if needed
+    max-height: 90vh;
     padding: 2rem;
     border-radius: 8px;
     position: relative;
@@ -84,6 +87,11 @@
         width: 100vw;
         border-radius: 0;
         border: 0;
+
+        .modaltitle {
+            font-size: 18px;
+            line-height: 24px;
+        }
     }
 
     .contentwrapper {
