@@ -372,35 +372,35 @@
             height: 240px;
         }
 
-        p {
-            font-size: 10px;
-            line-height: 20px;
-        }
+        // p {
+        //     font-size: 10px;
+        //     line-height: 20px;
+        // }
 
-        .etc {
+        // .etc {
 
-            .status,
-            .link {
-                padding: 4px 6px;
-                font-size: 8px;
-            }
-        }
+        //     .status,
+        //     .link {
+        //         padding: 4px 6px;
+        //         font-size: 8px;
+        //     }
+        // }
     }
 
-    .labels {
-        .label {
-            padding: 4px 6px;
+    // .labels {
+    //     .label {
+    //         padding: 4px 6px;
 
-            p {
-                font-size: 8px;
-            }
+    //         p {
+    //             font-size: 8px;
+    //         }
 
-            .logo {
-                height: 14px;
-                width: 14px;
-            }
-        }
-    }
+    //         .logo {
+    //             height: 14px;
+    //             width: 14px;
+    //         }
+    //     }
+    // }
 }
 
 @include mobile_xs {

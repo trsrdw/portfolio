@@ -18,13 +18,23 @@
 
 .modal {
     max-width: 600px;
-    overflow: auto; // allow internal scroll if needed
+    overflow: auto;
     max-height: 90vh;
     padding: 2rem;
     border-radius: 8px;
     position: relative;
     width: calc(100% - 2rem);
     border: 2px solid;
+
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE 10+ */
+
+    &::-webkit-scrollbar {
+        display: none;
+        /* Chrome, Safari, Opera */
+    }
 
     .modaltitle {
         text-transform: uppercase;
