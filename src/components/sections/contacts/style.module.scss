@@ -133,6 +133,12 @@
             height: 32px;
         }
     }
+
+    .copyright {
+        p {
+            font-size: 10px;
+        }
+    }
 }
 
 @include mobile_sm {
